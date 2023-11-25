@@ -5,6 +5,7 @@ class AppIcons {
   static const _path = "assets/icons";
 
   static const logo = '$_path/logo.svg';
+  static const google = '$_path/google.svg';
 }
 
 extension AppIconsExt on String {

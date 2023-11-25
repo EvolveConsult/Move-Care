@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'app_bar_widget.dart';
+import 'default_bottom_sheet.dart';
 
 class AppScaffoldWidget extends StatefulWidget {
   final bool extendBodyBehindAppBar;
@@ -24,6 +25,7 @@ class AppScaffoldWidget extends StatefulWidget {
   final Widget? floatingActionButton;
   final bool extendBody;
   final LeadingActionType leadingActionType;
+  final ValueNotifier<DefaultBottomSheet?>? bottomSheetAlert;
 
   const AppScaffoldWidget({
     super.key,
@@ -48,6 +50,7 @@ class AppScaffoldWidget extends StatefulWidget {
     this.backgroundColor,
     this.extendBody = false,
     this.leadingActionType = LeadingActionType.previous,
+    this.bottomSheetAlert,
   });
 
   @override
@@ -55,6 +58,26 @@ class AppScaffoldWidget extends StatefulWidget {
 }
 
 class _AppScaffoldWidgetState extends State<AppScaffoldWidget> {
+  void handleError() {
+    if (widget.bottomSheetAlert?.value != null) {
+      widget.bottomSheetAlert?.value!.showDefaultBottomSheet(context: context);
+    }
+
+    widget.bottomSheetAlert?.value = null;
+  }
+
+  @override
+  void initState() {
+    widget.bottomSheetAlert?.addListener(widget.handleError ?? handleError);
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    widget.bottomSheetAlert?.removeListener(widget.handleError ?? handleError);
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Material(

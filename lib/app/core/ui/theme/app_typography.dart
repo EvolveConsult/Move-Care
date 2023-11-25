@@ -5,18 +5,28 @@ import 'dart:io';
 enum AppTextSize { verySmall, small, normal, great, big, ultra }
 
 class AppText extends StatelessWidget {
-  const AppText(this.text, {super.key, this.size = AppTextSize.normal, this.maxLine});
+  const AppText(
+    this.text, {
+    super.key,
+    this.size = AppTextSize.normal,
+    this.maxLine,
+    this.textStyle,
+    this.textAlign,
+  });
 
   final String text;
   final AppTextSize size;
   final int? maxLine;
+  final TextStyle? textStyle;
+  final TextAlign? textAlign;
   @override
   Widget build(BuildContext context) {
     return Text(
       text,
       textScaler: TextScaler.linear(getScaler),
-      style: GoogleFonts.roboto(),
+      style: GoogleFonts.inter(textStyle: textStyle),
       maxLines: maxLine,
+      textAlign: textAlign,
     );
   }
 
