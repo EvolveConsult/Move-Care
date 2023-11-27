@@ -12,14 +12,14 @@ class AppButton extends StatelessWidget {
     this.type = AppButtonWidgetType.primary,
   });
   final String text;
-  final VoidCallback onTap;
+  final VoidCallback? onTap;
   final AppButtonWidgetType type;
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: onTap,
-      child: button(context),
+    return Opacity(
+      opacity: onTap == null ? .5 : 1,
+      child: GestureDetector(onTap: onTap, child: button(context)),
     );
   }
 

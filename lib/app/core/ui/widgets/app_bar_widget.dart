@@ -29,9 +29,10 @@ class AppBarWidget extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
+      scrolledUnderElevation: 0,
       automaticallyImplyLeading: false,
       titleSpacing: 8,
-      backgroundColor: backgroundColorAppBar ?? Theme.of(context).colorScheme.background,
+      backgroundColor: backgroundColorAppBar ?? Theme.of(context).colorScheme.error,
       leading: leadingWidget(),
       actions: actionsAppBar,
       title: AppText(appTitle, maxLine: 3),

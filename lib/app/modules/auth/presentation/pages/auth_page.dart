@@ -58,6 +58,7 @@ class AuthPage extends StatelessWidget {
                 const AppDivider(text: 'ou'),
                 const SizedBox(height: 16),
                 ContinueWithGoogleWidget(onTap: () {}),
+                const SizedBox(height: 20),
               ],
             ),
           ),

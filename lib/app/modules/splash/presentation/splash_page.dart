@@ -64,7 +64,7 @@ class SplashPage extends StatelessWidget {
               children: [
                 AppButton(
                   text: 'Criar conta',
-                  onTap: () {},
+                  onTap: () => Modular.to.pushNamed(AppRoutes.register),
                 ),
                 const SizedBox(height: 20),
                 AppButton(

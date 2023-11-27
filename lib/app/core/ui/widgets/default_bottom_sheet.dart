@@ -46,7 +46,7 @@ class DefaultBottomSheet {
             ),
       content: [
         content,
-        const SizedBox(height: 24),
+        const SizedBox(height: 32),
         Row(
           mainAxisAlignment: MainAxisAlignment.start,
           children: [

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:movecare/app/modules/register/register_module.dart';
 
 import 'app/core/ui/theme/color_schemes.dart';
 import 'app/modules/auth/auth_module.dart';
@@ -49,6 +50,7 @@ class AppModule extends Module {
   void routes(r) {
     r.module(Modular.initialRoute, module: SplashModule());
     r.module(Modular.initialRoute, module: AuthModule());
+    r.module(Modular.initialRoute, module: RegisterModule());
     r.module(Modular.initialRoute, module: HomeModule());
   }
 }

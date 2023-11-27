@@ -1,12 +1,12 @@
-// ignore_for_file: use_key_in_widget_constructors
-
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:movecare/app/core/ui/theme/app_typography.dart';
 
 import '../../domain/value_objects/value_object_interface.dart';
 
 class AppTextFormFieldPasswordWidget extends AppTextFormField {
   const AppTextFormFieldPasswordWidget({
+    super.key,
     super.hintText,
     super.labelText,
     super.onChanged,
@@ -21,7 +21,8 @@ class AppTextFormFieldPasswordWidget extends AppTextFormField {
     super.textColor,
     super.textInputAction,
     super.inputFormatters,
-    super.onFieldSubmitted,
+    super.onEditingComplete,
+    super.focusNode,
   });
 
   @override
@@ -50,14 +51,16 @@ class _AppTextFormFieldPasswordState extends State<AppTextFormFieldPasswordWidge
       suffixIcon: Icon(obscureText ? Icons.visibility_off_outlined : Icons.visibility_outlined),
       obscureText: obscureText,
       onIconTap: toggle,
-      inputFormatters: widget.inputFormatters,
-      onFieldSubmitted: widget.onFieldSubmitted,
+      inputFormatters: [FilteringTextInputFormatter.deny(RegExp(r'\s')), ...widget.inputFormatters ?? []],
+      onEditingComplete: widget.onEditingComplete,
+      focusNode: widget.focusNode,
     );
   }
 }
 
 class AppTextFormField extends StatefulWidget {
   const AppTextFormField({
+    super.key,
     this.hintText,
     this.initialValue,
     this.labelText,
@@ -79,7 +82,7 @@ class AppTextFormField extends StatefulWidget {
     this.focusedBorder,
     this.prefixStyle,
     this.enabled,
-    this.onFieldSubmitted,
+    this.onEditingComplete,
     this.prefixText,
     this.textAlign = TextAlign.start,
     this.borderColor,
@@ -99,7 +102,7 @@ class AppTextFormField extends StatefulWidget {
   final String? labelText;
   final ValueChanged<String>? onChanged;
   final Function()? onTap;
-  final ValueChanged<String>? onFieldSubmitted;
+  final VoidCallback? onEditingComplete;
   final TextEditingController? controller;
   final FocusNode? focusNode;
   final TextInputType? keyboardType;
@@ -159,66 +162,69 @@ class _AppTextFormFieldState extends State<AppTextFormField> {
 
   @override
   Widget build(BuildContext context) {
-    return TextFormField(
-      key: widget.textFieldKey,
-      onFieldSubmitted: widget.onFieldSubmitted,
-      enabled: widget.enabled,
-      autovalidateMode: widget.autovalidateMode,
-      onChanged: (value) {
-        setState(() {
-          countCharacters = value.length;
-        });
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        if (widget.labelText != null) ...[
+          AppText(widget.labelText!, size: AppTextSize.small, textStyle: const TextStyle(fontWeight: FontWeight.w500)),
+          const SizedBox(height: 8)
+        ],
+        TextFormField(
+          key: widget.textFieldKey,
+          onEditingComplete: widget.onEditingComplete,
+          enabled: widget.enabled,
+          autovalidateMode: widget.autovalidateMode,
+          onChanged: (value) {
+            setState(() {
+              countCharacters = value.length;
+            });
 
-        if (widget.onChanged != null) widget.onChanged!(value);
-      },
-      controller: widget.controller,
-      focusNode: widget.focusNode,
-      readOnly: widget.readOnly,
-      onTap: widget.onTap,
-      // style: widget.customStyle ?? AppTypography.body1_400.copyWith(color: widget.textColor ?? AppColors.preto),
-      keyboardType: widget.keyboardType,
-      validator: (v) => validator(v),
-      initialValue: widget.initialValue,
-      obscureText: widget.obscureText,
-      textAlign: widget.textAlign,
-      maxLines: widget.isTextArea ? 5 : 1,
-      textInputAction: widget.textInputAction,
-      // cursorColor: widget.cursorColor ?? AppColors.preto,
-      decoration: InputDecoration(
-        // counterStyle: AppTypography.body1_400.copyWith(fontSize: 12),
-        counterText:
-            widget.showCounter && widget.maxCharacters != null ? '$countCharacters/${widget.maxCharacters}' : null,
-        // hintStyle: AppTypography.function2_400.copyWith(color: AppColors.cinzaSecundario),
-        prefixText: widget.prefixText,
-        prefixStyle: widget.prefixStyle,
-        errorMaxLines: 3,
-        suffixIcon: widget.suffixIcon != null
-            ? GestureDetector(
-                onTap: widget.onIconTap,
-                child: SizedBox(
-                  width: widget.suffixIconWidth ?? 20,
-                  height: widget.suffixIconHeight ?? 20,
-                  child: widget.suffixIcon,
-                ),
-              )
-            : null,
-        hintText: widget.hintText,
-        isDense: true,
-        labelText: widget.labelText?.toUpperCase(),
-        // labelStyle: AppTypography.function2_700.copyWith(color: widget.labelColor ?? AppColors.cianoPrincipal),
-        contentPadding: const EdgeInsets.symmetric(horizontal: 24, vertical: 14),
-        alignLabelWithHint: true,
-        floatingLabelBehavior: FloatingLabelBehavior.always,
-        border: border,
-        enabledBorder: border,
-        focusedBorder: border,
-        disabledBorder: border,
-      ),
-      inputFormatters: widget.inputFormatters == null
-          ? [FilteringTextInputFormatter.deny(RegExp(emojiRegexp))]
-          : widget.inputFormatters!
-        ..add(FilteringTextInputFormatter.deny(RegExp(emojiRegexp)))
-        ..add(LengthLimitingTextInputFormatter(widget.maxCharacters)),
+            if (widget.onChanged != null) widget.onChanged!(value);
+          },
+          controller: widget.controller,
+          focusNode: widget.focusNode,
+          readOnly: widget.readOnly,
+          onTap: widget.onTap,
+          keyboardType: widget.keyboardType,
+          validator: (v) => validator(v),
+          initialValue: widget.initialValue,
+          obscureText: widget.obscureText,
+          textAlign: widget.textAlign,
+          maxLines: widget.isTextArea ? 5 : 1,
+          textInputAction: widget.textInputAction,
+          decoration: InputDecoration(
+            fillColor: Theme.of(context).colorScheme.background,
+            filled: true,
+            counterText:
+                widget.showCounter && widget.maxCharacters != null ? '$countCharacters/${widget.maxCharacters}' : null,
+            hintStyle: TextStyle(color: Theme.of(context).colorScheme.outline),
+            prefixText: widget.prefixText,
+            prefixStyle: widget.prefixStyle,
+            errorMaxLines: 3,
+            suffixIcon: widget.suffixIcon != null
+                ? GestureDetector(
+                    onTap: widget.onIconTap,
+                    child: SizedBox(
+                      width: widget.suffixIconWidth ?? 20,
+                      height: widget.suffixIconHeight ?? 20,
+                      child: widget.suffixIcon,
+                    ),
+                  )
+                : null,
+            hintText: widget.hintText,
+            isDense: true,
+            border: border,
+            enabledBorder: border,
+            focusedBorder: border,
+            disabledBorder: border,
+          ),
+          inputFormatters: widget.inputFormatters == null
+              ? [FilteringTextInputFormatter.deny(RegExp(emojiRegexp))]
+              : widget.inputFormatters!
+            ..add(FilteringTextInputFormatter.deny(RegExp(emojiRegexp)))
+            ..add(LengthLimitingTextInputFormatter(widget.maxCharacters)),
+        )
+      ],
     );
   }
 

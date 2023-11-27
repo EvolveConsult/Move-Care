@@ -1,21 +1,15 @@
+import 'package:flutter/material.dart';
+
 import 'value_object_interface.dart';
 
 class Equality extends ValueObjectInterface {
-  final String comparisonValue;
   final String message;
+  final ValueNotifier<TextEditingValue> comparisonValue;
 
-  Equality({required this.comparisonValue, required this.message});
-
-  Equality copyWith(String comparisonValue) {
-    return Equality(comparisonValue: comparisonValue, message: message);
-  }
+  Equality({required this.message, required this.comparisonValue});
 
   @override
   String? validator(String value) {
-    if (value.isNotEmpty) {
-      return value == comparisonValue ? null : message;
-    } else {
-      return null;
-    }
+    return value == comparisonValue.value.text ? null : message;
   }
 }
