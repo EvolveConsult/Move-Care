@@ -7,6 +7,7 @@ import 'package:movecare/app/modules/register/register_module.dart';
 import 'app/core/ui/theme/color_schemes.dart';
 import 'app/modules/auth/auth_module.dart';
 import 'app/modules/home/home_module.dart';
+import 'app/modules/recovery_password/recovery_password_module.dart';
 import 'app/modules/splash/splash_module.dart';
 
 void main() {
@@ -50,6 +51,7 @@ class AppModule extends Module {
   void routes(r) {
     r.module(Modular.initialRoute, module: SplashModule());
     r.module(Modular.initialRoute, module: AuthModule());
+    r.module(Modular.initialRoute, module: RecoveryPasswordModule());
     r.module(Modular.initialRoute, module: RegisterModule());
     r.module(Modular.initialRoute, module: HomeModule());
   }

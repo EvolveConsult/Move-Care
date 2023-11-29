@@ -24,7 +24,7 @@ class AppBottomSheet<T> {
         return PopScope(
           canPop: willPop ?? true,
           child: Padding(
-            padding: padding ?? const EdgeInsets.symmetric(horizontal: 20),
+            padding: padding ?? const EdgeInsets.fromLTRB(20, 0, 20, 20),
             child: Column(
               mainAxisSize: MainAxisSize.min,
               crossAxisAlignment: CrossAxisAlignment.start,

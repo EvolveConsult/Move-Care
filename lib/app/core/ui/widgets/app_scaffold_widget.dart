@@ -38,7 +38,7 @@ class AppScaffoldWidget extends StatefulWidget {
     this.leadingAction,
     this.actionsAppBar = const [],
     this.pagePadding = const EdgeInsets.symmetric(horizontal: 20),
-    this.resizeToAvoidBottomInset = false,
+    this.resizeToAvoidBottomInset = true,
     this.bottomSheet,
     this.bottomNavigationBar,
     this.leadingActionWidget,

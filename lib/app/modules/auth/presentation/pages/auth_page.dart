@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_modular/flutter_modular.dart';
+import 'package:movecare/app/core/app_routes.dart';
 import 'package:movecare/app/core/ui/theme/app_typography.dart';
 import 'package:movecare/app/core/ui/widgets/app_button_widget.dart';
 import 'package:movecare/app/core/ui/widgets/app_scaffold_widget.dart';
@@ -19,59 +21,64 @@ class AuthPage extends StatelessWidget {
       backgroundColor: Theme.of(context).colorScheme.onBackground,
       backgroundColorAppBar: Theme.of(context).colorScheme.onBackground,
       bottomSheetAlert: controller.bottomSheetAlert,
-      page: CustomScrollView(
-        slivers: [
-          SliverToBoxAdapter(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                const SizedBox(height: 20),
-                Container(height: 140, width: 140, color: Theme.of(context).colorScheme.secondary),
-                const SizedBox(height: 80),
-                AppTextFormField(
-                  labelText: 'E-mail',
-                  hintText: 'Digite seu e-mail',
-                  validator: [Email()],
-                  autovalidateMode: AutovalidateMode.onUserInteraction,
-                  keyboardType: TextInputType.emailAddress,
-                  controller: controller.email,
-                ),
-                const SizedBox(height: 20),
-                AppTextFormFieldPasswordWidget(
-                  controller: controller.password,
-                  labelText: 'Senha',
-                  hintText: 'Digite a senha',
-                ),
-                const SizedBox(height: 8),
-                Align(
-                  alignment: Alignment.centerRight,
-                  child: GestureDetector(
-                    onTap: controller.onTapRecoveryPassword,
-                    child: AppText(
-                      'Esqueci minha senha',
-                      size: AppTextSize.verySmall,
-                      textStyle: TextStyle(color: Theme.of(context).colorScheme.primary),
+      page: ScrollConfiguration(
+        behavior: const ScrollBehavior().copyWith(overscroll: false),
+        child: CustomScrollView(
+          physics: const ClampingScrollPhysics(),
+          slivers: [
+            SliverToBoxAdapter(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  const SizedBox(height: 20),
+                  Container(height: 140, width: 140, color: Theme.of(context).colorScheme.secondary),
+                  const SizedBox(height: 80),
+                  AppTextFormField(
+                    labelText: 'E-mail',
+                    hintText: 'Digite seu e-mail',
+                    validator: [Email()],
+                    autovalidateMode: AutovalidateMode.onUserInteraction,
+                    keyboardType: TextInputType.emailAddress,
+                    controller: controller.email,
+                  ),
+                  const SizedBox(height: 20),
+                  AppTextFormFieldPasswordWidget(
+                    controller: controller.password,
+                    labelText: 'Senha',
+                    hintText: 'Digite a senha',
+                  ),
+                  const SizedBox(height: 8),
+                  Align(
+                    alignment: Alignment.centerRight,
+                    child: GestureDetector(
+                      onTap: () => Modular.to.pushNamed(AppRoutes.recoveryPasswordEmail),
+                      child: AppText(
+                        'Esqueci minha senha',
+                        size: AppTextSize.verySmall,
+                        textStyle: TextStyle(color: Theme.of(context).colorScheme.primary),
+                      ),
                     ),
                   ),
-                ),
-                const SizedBox(height: 20),
-                const AppDivider(text: 'ou'),
-                const SizedBox(height: 16),
-                ContinueWithGoogleWidget(onTap: () {}),
-                const SizedBox(height: 20),
-              ],
+                  const SizedBox(height: 20),
+                  const AppDivider(text: 'ou'),
+                  const SizedBox(height: 16),
+                  ContinueWithGoogleWidget(onTap: () {}),
+                  const SizedBox(height: 20),
+                ],
+              ),
             ),
-          ),
-          SliverFillRemaining(
-            child: Column(
-              children: [
-                const Spacer(),
-                AppButton(text: 'Entrar', onTap: controller.onConfirm),
-                SizedBox(height: MediaQuery.of(context).padding.bottom),
-              ],
-            ),
-          )
-        ],
+            SliverFillRemaining(
+              hasScrollBody: false,
+              child: Column(
+                children: [
+                  const Spacer(),
+                  AppButton(text: 'Entrar', onTap: controller.onConfirm),
+                  SizedBox(height: MediaQuery.of(context).padding.bottom + 20),
+                ],
+              ),
+            )
+          ],
+        ),
       ),
     );
   }
