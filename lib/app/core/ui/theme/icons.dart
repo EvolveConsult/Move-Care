@@ -6,6 +6,9 @@ class AppIcons {
 
   static const logo = '$_path/logo.svg';
   static const google = '$_path/google.svg';
+  static const home = '$_path/home.svg';
+  static const profile = '$_path/profile.svg';
+  static const tests = '$_path/tests.svg';
 }
 
 extension AppIconsExt on String {
@@ -46,7 +49,7 @@ class AppIcon extends StatelessWidget {
   final Function()? onTap;
 
   const AppIcon({
-    Key? key,
+    super.key,
     required this.icon,
     this.fit,
     this.color,
@@ -56,7 +59,7 @@ class AppIcon extends StatelessWidget {
     this.parentHeight,
     this.parentWidth,
     this.onTap,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

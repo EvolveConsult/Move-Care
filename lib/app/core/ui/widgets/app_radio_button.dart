@@ -11,31 +11,49 @@ class AppRadioButton<T> extends StatefulWidget {
   State<AppRadioButton<T>> createState() => _AppRadioButtonState<T>();
 }
 
-class _AppRadioButtonState<T> extends State<AppRadioButton<T>> {
+class _AppRadioButtonState<T> extends State<AppRadioButton<T>> with AutomaticKeepAliveClientMixin {
   T? selected;
   @override
   Widget build(BuildContext context) {
-    return ListView.builder(
-      shrinkWrap: true,
-      itemCount: widget.items.length,
-      itemBuilder: (_, index) {
-        return ListTile(
-          title: AppText(widget.items[index].toString()),
-          contentPadding: EdgeInsets.zero,
-          splashColor: Colors.transparent,
-          onTap: () {
-            onChanged(widget.items[index]);
-          },
-          horizontalTitleGap: 8,
-          visualDensity: VisualDensity.compact,
-          leading: Radio<T>(
-            visualDensity: VisualDensity.compact,
-            value: widget.items[index],
-            groupValue: selected,
-            onChanged: onChanged,
-          ),
-        );
-      },
+    super.build(context); //this line is needed
+    return Transform.translate(
+      offset: const Offset(0, 0),
+      child: ListView.separated(
+        separatorBuilder: (_, __) => const SizedBox(height: 8),
+        physics: const NeverScrollableScrollPhysics(),
+        shrinkWrap: true,
+        itemCount: widget.items.length,
+        itemBuilder: (_, index) {
+          return GestureDetector(
+            onTap: () => onChanged(widget.items[index]),
+            child: AppRichText(
+              children: [
+                WidgetSpan(
+                    child: Container(
+                      height: 16,
+                      width: 16,
+                      padding: const EdgeInsets.all(2),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(16),
+                        border: Border.all(
+                          color: widget.items[index] == selected
+                              ? Theme.of(context).colorScheme.primary
+                              : Theme.of(context).colorScheme.error,
+                        ),
+                      ),
+                      child: widget.items[index] == selected
+                          ? CircleAvatar(backgroundColor: Theme.of(context).colorScheme.primary)
+                          : null,
+                    ),
+                    alignment: PlaceholderAlignment.middle),
+                TextSpan(
+                  text: '  ${widget.items[index].toString()}',
+                )
+              ],
+            ),
+          );
+        },
+      ),
     );
   }
 
@@ -45,4 +63,7 @@ class _AppRadioButtonState<T> extends State<AppRadioButton<T>> {
       selected = value;
     });
   }
+
+  @override
+  bool get wantKeepAlive => true;
 }

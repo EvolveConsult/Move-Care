@@ -69,13 +69,13 @@ class SplashPage extends StatelessWidget {
                 const SizedBox(height: 20),
                 AppButton(
                   text: 'Entrar',
-                  onTap: () => Modular.to.pushNamed(AppRoutes.auth),
+                  onTap: () => Modular.to.pushNamed(AppRoutes.home),
                   type: AppButtonWidgetType.secondary,
                 ),
               ],
             ),
           ),
-          SizedBox(height: MediaQuery.of(context).padding.bottom),
+          SizedBox(height: MediaQuery.of(context).padding.bottom + 20),
         ],
       ),
     );

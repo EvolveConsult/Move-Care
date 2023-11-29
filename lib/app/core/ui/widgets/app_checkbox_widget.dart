@@ -4,10 +4,10 @@ class AppCheckbox extends StatelessWidget {
   final bool value;
   final void Function(bool?) onChanged;
   const AppCheckbox({
-    Key? key,
+    super.key,
     required this.value,
     required this.onChanged,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

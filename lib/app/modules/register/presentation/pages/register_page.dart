@@ -117,9 +117,9 @@ class RegisterPage extends StatelessWidget {
                     ValueListenableBuilder(
                         valueListenable: controller.enableButton,
                         builder: (_, value, __) {
-                          return AppButton(text: 'Entrar', onTap: value ? controller.onConfirm : null);
+                          return AppButton(text: 'Criar conta', onTap: value ? controller.onConfirm : null);
                         }),
-                    SizedBox(height: MediaQuery.of(context).padding.bottom),
+                    SizedBox(height: MediaQuery.of(context).padding.bottom + 20),
                   ],
                 ),
               )

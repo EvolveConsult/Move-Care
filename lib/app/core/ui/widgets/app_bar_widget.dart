@@ -32,10 +32,15 @@ class AppBarWidget extends StatelessWidget implements PreferredSizeWidget {
       scrolledUnderElevation: 0,
       automaticallyImplyLeading: false,
       titleSpacing: 8,
-      backgroundColor: backgroundColorAppBar ?? Theme.of(context).colorScheme.error,
+      backgroundColor: backgroundColorAppBar ?? Theme.of(context).colorScheme.background,
       leading: leadingWidget(),
       actions: actionsAppBar,
-      title: AppText(appTitle, maxLine: 3),
+      title: AppText(
+        appTitle,
+        size: AppTextSize.verySmall,
+        textStyle: const TextStyle(fontWeight: FontWeight.w500),
+        maxLine: 3,
+      ),
       centerTitle: true,
       elevation: 0,
     );
