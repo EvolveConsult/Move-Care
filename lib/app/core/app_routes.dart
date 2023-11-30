@@ -16,8 +16,10 @@ class AppRoutes {
   static const register = '/register';
 
   //HOME
-  static const home = '/home';
-  static const wellcome = '/wellcome';
+  static const start = '/start';
+  static const wellcome = '$start/wellcome';
+  static const home = '$start/home';
+  static const profile = '$start/profile';
 
   //TESTS
   static const tests = '/tests';

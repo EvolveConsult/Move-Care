@@ -15,7 +15,7 @@ class _AppRadioButtonState<T> extends State<AppRadioButton<T>> with AutomaticKee
   T? selected;
   @override
   Widget build(BuildContext context) {
-    super.build(context); //this line is needed
+    super.build(context);
     return Transform.translate(
       offset: const Offset(0, 0),
       child: ListView.separated(

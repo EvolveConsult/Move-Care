@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:movecare/app/modules/register/register_module.dart';
-
+import 'package:movecare/app/core/app_routes.dart';
 import 'app/core/ui/theme/color_schemes.dart';
 import 'app/modules/auth/auth_module.dart';
-import 'app/modules/home/home_module.dart';
+import 'app/modules/home/start_module.dart';
 import 'app/modules/recovery_password/recovery_password_module.dart';
+import 'app/modules/register/register_module.dart';
 import 'app/modules/splash/splash_module.dart';
 
 void main() {
@@ -27,14 +27,8 @@ class AppWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp.router(
       title: 'Move & Care',
-      theme: ThemeData(
-        useMaterial3: true,
-        colorScheme: lightColorScheme,
-      ),
-      darkTheme: ThemeData(
-        useMaterial3: true,
-        colorScheme: lightColorScheme,
-      ),
+      theme: ThemeData(useMaterial3: true, colorScheme: lightColorScheme),
+      darkTheme: ThemeData(useMaterial3: true, colorScheme: lightColorScheme),
       routerConfig: Modular.routerConfig,
       debugShowCheckedModeBanner: false,
       scaffoldMessengerKey: AppGlobalKeys.scaffoldMessengerKey,
@@ -50,9 +44,9 @@ class AppModule extends Module {
   @override
   void routes(r) {
     r.module(Modular.initialRoute, module: SplashModule());
-    r.module(Modular.initialRoute, module: AuthModule());
+    r.module(AppRoutes.auth, module: AuthModule());
+    r.module(Modular.initialRoute, module: StartModule());
     r.module(Modular.initialRoute, module: RecoveryPasswordModule());
     r.module(Modular.initialRoute, module: RegisterModule());
-    r.module(Modular.initialRoute, module: HomeModule());
   }
 }

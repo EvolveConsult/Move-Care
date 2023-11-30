@@ -44,6 +44,7 @@ class RegisterController {
 
   void onTapCheckboxContract(bool? value) {
     acceptContract.value = value ?? false;
+    validate();
   }
 
   bool validate() {

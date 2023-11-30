@@ -21,24 +21,28 @@ class RecoveryPasswordPage extends StatelessWidget {
           physics: const ClampingScrollPhysics(),
           slivers: [
             SliverToBoxAdapter(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  const SizedBox(height: 20),
-                  Container(height: 140, width: 140, color: Theme.of(context).colorScheme.secondary),
-                  const SizedBox(height: 52),
-                  const AppText('Nos informe o seu e-mail para recuperação de senha.',
-                      textStyle: TextStyle(fontWeight: FontWeight.w500)),
-                  const SizedBox(height: 32),
-                  AppTextFormField(
-                    labelText: 'E-mail',
-                    hintText: 'Digite seu e-mail',
-                    validator: [Email()],
-                    autovalidateMode: AutovalidateMode.onUserInteraction,
-                    keyboardType: TextInputType.emailAddress,
-                    controller: controller.email,
-                  ),
-                ],
+              child: Form(
+                key: controller.formKey,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    const SizedBox(height: 20),
+                    Container(height: 140, width: 140, color: Theme.of(context).colorScheme.secondary),
+                    const SizedBox(height: 52),
+                    const AppText('Nos informe o seu e-mail para recuperação de senha.',
+                        textStyle: TextStyle(fontWeight: FontWeight.w500)),
+                    const SizedBox(height: 32),
+                    AppTextFormField(
+                      labelText: 'E-mail',
+                      hintText: 'Digite seu e-mail',
+                      validator: [Email()],
+                      autovalidateMode: AutovalidateMode.onUserInteraction,
+                      keyboardType: TextInputType.emailAddress,
+                      controller: controller.email,
+                      onEditingComplete: controller.validate,
+                    ),
+                  ],
+                ),
               ),
             ),
             SliverFillRemaining(
@@ -46,7 +50,11 @@ class RecoveryPasswordPage extends StatelessWidget {
               child: Column(
                 children: [
                   const Spacer(),
-                  AppButton(text: 'Continuar', onTap: controller.onConfirm),
+                  ValueListenableBuilder(
+                      valueListenable: controller.enableButton,
+                      builder: (_, value, __) {
+                        return AppButton(text: 'Continuar', onTap: value ? controller.onConfirm : null);
+                      }),
                   SizedBox(height: MediaQuery.of(context).padding.bottom + 20),
                 ],
               ),
