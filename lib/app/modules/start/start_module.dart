@@ -3,9 +3,9 @@ import 'package:flutter_modular/flutter_modular.dart';
 import '../../core/app_routes.dart';
 
 import 'presentation/pages/start_page.dart';
-import 'presentation/pages/wellcome_page.dart';
-import 'submodules/guidanceForUsers/guidance_for_users_module.dart';
-import 'submodules/tests/tests_module.dart';
+import 'submodules/home/submodules/wellcome_page.dart';
+import 'submodules/home/submodules/guidanceForUsers/guidance_for_users_module.dart';
+import 'submodules/home/submodules/tests/tests_module.dart';
 
 class StartModule extends Module {
   @override

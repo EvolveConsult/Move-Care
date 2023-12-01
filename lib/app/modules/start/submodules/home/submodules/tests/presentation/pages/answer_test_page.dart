@@ -6,9 +6,9 @@ import 'package:movecare/app/core/app_routes.dart';
 import 'package:movecare/app/core/ui/theme/app_typography.dart';
 import 'package:movecare/app/core/ui/widgets/app_button_widget.dart';
 import 'package:movecare/app/core/ui/widgets/app_radio_button.dart';
-import 'package:movecare/app/modules/home/submodules/tests/presentation/pages/views_objects/result_test_vo.dart';
+import 'package:movecare/app/modules/start/submodules/home/submodules/tests/presentation/pages/views_objects/result_test_vo.dart';
 
-import '../../../../../../core/ui/widgets/app_scaffold_widget.dart';
+import '../../../../../../../../core/ui/widgets/app_scaffold_widget.dart';
 import '../../domain/test_entity.dart';
 
 class AnswerTestPage extends StatefulWidget {

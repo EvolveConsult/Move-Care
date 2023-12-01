@@ -5,10 +5,11 @@ import 'package:flutter_modular/flutter_modular.dart';
 import 'package:movecare/app/core/app_routes.dart';
 import 'app/core/ui/theme/color_schemes.dart';
 import 'app/modules/auth/auth_module.dart';
-import 'app/modules/home/start_module.dart';
+import 'app/modules/start/start_module.dart';
 import 'app/modules/recovery_password/recovery_password_module.dart';
 import 'app/modules/register/register_module.dart';
 import 'app/modules/splash/splash_module.dart';
+import 'app/modules/start/submodules/profile/submodules/contacts_us/contact_us_module.dart';
 
 void main() {
   SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.dark);
@@ -48,5 +49,6 @@ class AppModule extends Module {
     r.module(Modular.initialRoute, module: StartModule());
     r.module(Modular.initialRoute, module: RecoveryPasswordModule());
     r.module(Modular.initialRoute, module: RegisterModule());
+    r.module(Modular.initialRoute, module: ContactUsModule());
   }
 }

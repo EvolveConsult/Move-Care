@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:movecare/app/core/app_routes.dart';
 
-import '../../../../../../core/ui/theme/app_typography.dart';
-import '../../../../../../core/ui/widgets/app_scaffold_widget.dart';
+import '../../../../../../../../core/ui/theme/app_typography.dart';
+import '../../../../../../../../core/ui/widgets/app_scaffold_widget.dart';
 import '../../domain/test_entity.dart';
 
 class TestsPage extends StatefulWidget {
@@ -104,8 +104,7 @@ class _ItemsTests extends StatelessWidget {
           children: [
             ClipRRect(
               borderRadius: BorderRadius.circular(12),
-              child: Container(
-                color: Colors.blueAccent,
+              child: SizedBox(
                 width: 100,
                 height: 80,
                 child: CachedNetworkImage(

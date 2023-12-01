@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:movecare/app/core/ui/theme/app_typography.dart';
-
-import '../../../../../../core/ui/widgets/app_button_widget.dart';
-import '../../../../../../core/ui/widgets/app_scaffold_widget.dart';
+import '../../../../../../../../core/ui/widgets/app_scaffold_widget.dart';
 import 'views_objects/result_test_vo.dart';
 
 class ResultTestPage extends StatelessWidget {
@@ -32,11 +30,11 @@ class ResultTestPage extends StatelessWidget {
           ],
         ),
       ),
-      bottomNavigationBar: IntrinsicHeight(
-          child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 24),
-        child: AppButton(text: 'Compartilhar resultado', onTap: () {}),
-      )),
+      // bottomNavigationBar: IntrinsicHeight(
+      //     child: Padding(
+      //   padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 24),
+      //   child: AppButton(text: 'Compartilhar resultado', onTap: () {}),
+      // )),
     );
   }
 }

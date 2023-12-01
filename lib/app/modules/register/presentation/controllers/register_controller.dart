@@ -21,7 +21,11 @@ class RegisterController {
 
   ValueNotifier<bool> acceptContract = ValueNotifier(false);
 
-  void onTapContract() {}
+  void onInit() {
+    acceptContract.addListener(() {
+      validate();
+    });
+  }
 
   Future<void> onConfirm() async {
     if (validate() == false) return;
@@ -42,11 +46,6 @@ class RegisterController {
         confirmText: 'Entendi');
   }
 
-  void onTapCheckboxContract(bool? value) {
-    acceptContract.value = value ?? false;
-    validate();
-  }
-
   bool validate() {
     FocusManager.instance.primaryFocus?.unfocus();
     if (formKey.currentState?.validate() == true && acceptContract.value) {
@@ -55,5 +54,9 @@ class RegisterController {
       enableButton.value = false;
     }
     return enableButton.value;
+  }
+
+  void onTapContract() {
+    //TODO levar para tela de contrato
   }
 }

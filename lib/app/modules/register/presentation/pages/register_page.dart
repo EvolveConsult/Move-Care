@@ -13,20 +13,32 @@ import 'package:movecare/app/core/ui/widgets/continue_with_google_widget.dart';
 import '../../../../core/domain/value_objects/email.dart';
 import '../controllers/register_controller.dart';
 
-class RegisterPage extends StatelessWidget {
+class RegisterPage extends StatefulWidget {
   const RegisterPage({super.key, required this.controller});
 
   final RegisterController controller;
+
+  @override
+  State<RegisterPage> createState() => _RegisterPageState();
+}
+
+class _RegisterPageState extends State<RegisterPage> {
+  @override
+  void initState() {
+    super.initState();
+
+    widget.controller.onInit();
+  }
 
   @override
   Widget build(BuildContext context) {
     return AppScaffoldWidget(
       backgroundColor: Theme.of(context).colorScheme.onBackground,
       backgroundColorAppBar: Theme.of(context).colorScheme.onBackground,
-      bottomSheetAlert: controller.bottomSheetAlert,
-      onTap: controller.validate,
+      bottomSheetAlert: widget.controller.bottomSheetAlert,
+      onTap: widget.controller.validate,
       page: Form(
-        key: controller.formKey,
+        key: widget.controller.formKey,
         child: ScrollConfiguration(
           behavior: const ScrollBehavior().copyWith(overscroll: false),
           child: CustomScrollView(
@@ -50,27 +62,27 @@ class RegisterPage extends StatelessWidget {
                         hintText: 'Digite seu e-mail',
                         validator: [Email()],
                         keyboardType: TextInputType.emailAddress,
-                        controller: controller.email,
-                        onEditingComplete: controller.focusNodePassword.requestFocus,
+                        controller: widget.controller.email,
+                        onEditingComplete: widget.controller.focusNodePassword.requestFocus,
                       ),
                       AppTextFormFieldPasswordWidget(
-                        focusNode: controller.focusNodePassword,
-                        controller: controller.password,
+                        focusNode: widget.controller.focusNodePassword,
+                        controller: widget.controller.password,
                         labelText: 'Senha',
                         hintText: 'Digite a senha',
-                        validator: [controller.validatePassword],
-                        onEditingComplete: controller.focusconfirmPassword.requestFocus,
+                        validator: [widget.controller.validatePassword],
+                        onEditingComplete: widget.controller.focusconfirmPassword.requestFocus,
                       ),
                       AppTextFormFieldPasswordWidget(
-                        focusNode: controller.focusconfirmPassword,
-                        controller: controller.confirmPassword,
+                        focusNode: widget.controller.focusconfirmPassword,
+                        controller: widget.controller.confirmPassword,
                         labelText: 'Confirme a senha',
                         hintText: 'Confirme a senha digitada',
-                        onEditingComplete: controller.validate,
+                        onEditingComplete: widget.controller.validate,
                         validator: [
                           Required('Campo obrigatório'),
                           Equality(
-                            comparisonValue: controller.password,
+                            comparisonValue: widget.controller.password,
                             message: 'As senhas não coincidem',
                           )
                         ],
@@ -87,24 +99,20 @@ class RegisterPage extends StatelessWidget {
                     const SizedBox(height: 16),
                     ContinueWithGoogleWidget(onTap: () {}),
                     const SizedBox(height: 12),
-                    ValueListenableBuilder(
-                        valueListenable: controller.acceptContract,
-                        builder: (_, value, __) {
-                          return AppRichText(
-                            children: [
-                              WidgetSpan(
-                                  child: AppCheckbox(value: value, onChanged: controller.onTapCheckboxContract),
-                                  alignment: PlaceholderAlignment.middle),
-                              const TextSpan(text: '  Li e concordo com as'),
-                              TextSpan(
-                                text: ' política de privacidade e termos de uso ',
-                                style: TextStyle(color: Theme.of(context).colorScheme.primary),
-                                recognizer: TapGestureRecognizer()..onTap = controller.onTapContract,
-                              ),
-                              const TextSpan(text: 'do Move & Care.'),
-                            ],
-                          );
-                        }),
+                    AppRichText(
+                      children: [
+                        WidgetSpan(
+                            child: AppCheckbox(notifier: widget.controller.acceptContract),
+                            alignment: PlaceholderAlignment.middle),
+                        const TextSpan(text: '  Li e concordo com as'),
+                        TextSpan(
+                          text: ' política de privacidade e termos de uso ',
+                          style: TextStyle(color: Theme.of(context).colorScheme.primary),
+                          recognizer: TapGestureRecognizer()..onTap = widget.controller.onTapContract,
+                        ),
+                        const TextSpan(text: 'do Move & Care.'),
+                      ],
+                    ),
                     const SizedBox(height: 20),
                   ],
                 ),
@@ -115,9 +123,9 @@ class RegisterPage extends StatelessWidget {
                   children: [
                     const Spacer(),
                     ValueListenableBuilder(
-                        valueListenable: controller.enableButton,
+                        valueListenable: widget.controller.enableButton,
                         builder: (_, value, __) {
-                          return AppButton(text: 'Criar conta', onTap: value ? controller.onConfirm : null);
+                          return AppButton(text: 'Criar conta', onTap: value ? widget.controller.onConfirm : null);
                         }),
                     SizedBox(height: MediaQuery.of(context).padding.bottom + 20),
                   ],

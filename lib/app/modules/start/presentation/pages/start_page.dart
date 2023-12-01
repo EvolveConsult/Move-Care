@@ -4,8 +4,8 @@ import '../../../../core/ui/theme/icons.dart';
 import '../../../../core/ui/widgets/app_bar_widget.dart';
 import '../../../../core/ui/widgets/app_navigation_destination_widget.dart';
 import '../../../../core/ui/widgets/app_scaffold_widget.dart';
-import 'home_page.dart';
-import 'profile_page.dart';
+import '../../submodules/home/presentation/pages/home_page.dart';
+import '../../submodules/profile/presentation/pages/profile_page.dart';
 
 class StartPage extends StatefulWidget {
   const StartPage({super.key});

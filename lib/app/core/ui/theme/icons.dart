@@ -9,6 +9,10 @@ class AppIcons {
   static const home = '$_path/home.svg';
   static const profile = '$_path/profile.svg';
   static const tests = '$_path/tests.svg';
+  static const mail = '$_path/mail.svg';
+  static const terms = '$_path/terms.svg';
+  static const exit = '$_path/exit.svg';
+  static const star = '$_path/star.svg';
 }
 
 extension AppIconsExt on String {
