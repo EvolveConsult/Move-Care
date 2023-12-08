@@ -8,8 +8,8 @@ class AppRoutes {
   //RECOVERY
   static const recoveryPassword = '/recoveryPassword';
   static const recoveryPasswordEmail = '$recoveryPassword/recoveryPassword';
-  static const recoveryPasswordToken = '$recoveryPassword/token';
-  static const recoveryPasswordPassword = '$recoveryPassword/password';
+  // static const recoveryPasswordToken = '$recoveryPassword/token';
+  // static const recoveryPasswordPassword = '$recoveryPassword/password';
   static const recoveryPasswordSuccess = '$recoveryPassword/success';
 
   //REGISTER

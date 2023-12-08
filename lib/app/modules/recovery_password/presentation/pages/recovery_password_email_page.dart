@@ -15,6 +15,7 @@ class RecoveryPasswordPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AppScaffoldWidget(
+      onTap: controller.validate,
       page: ScrollConfiguration(
         behavior: const ScrollBehavior().copyWith(overscroll: false),
         child: CustomScrollView(
@@ -36,7 +37,7 @@ class RecoveryPasswordPage extends StatelessWidget {
                       labelText: 'E-mail',
                       hintText: 'Digite seu e-mail',
                       validator: [Email()],
-                      autovalidateMode: AutovalidateMode.onUserInteraction,
+                      // autovalidateMode: AutovalidateMode.onUserInteraction,
                       keyboardType: TextInputType.emailAddress,
                       controller: controller.email,
                       onEditingComplete: controller.validate,
@@ -49,6 +50,7 @@ class RecoveryPasswordPage extends StatelessWidget {
               hasScrollBody: false,
               child: Column(
                 children: [
+                  const SizedBox(height: 12),
                   const Spacer(),
                   ValueListenableBuilder(
                       valueListenable: controller.enableButton,

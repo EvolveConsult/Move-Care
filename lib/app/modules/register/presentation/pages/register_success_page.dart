@@ -13,6 +13,7 @@ class RegisterSuccessPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AppScaffoldWidget(
+      canPop: false,
       hasAppBar: false,
       page: Column(
         mainAxisAlignment: MainAxisAlignment.center,

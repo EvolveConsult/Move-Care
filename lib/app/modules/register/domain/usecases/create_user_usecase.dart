@@ -13,7 +13,7 @@ class CreateUserWithEmailAndPasswordUsecase implements CreateUserUsecase {
 
   CreateUserWithEmailAndPasswordUsecase({required this.registerRepository});
   @override
-  Future<Either<Failure, void>> call(CreateUserRequestEntity request) {
-    return registerRepository.createUserWithEmailAndPassword(request);
+  Future<Either<Failure, void>> call(CreateUserRequestEntity request) async {
+    return await registerRepository.createUserWithEmailAndPassword(request);
   }
 }
