@@ -14,6 +14,7 @@ class AppRoutes {
 
   //REGISTER
   static const register = '/register';
+  static const registerSuccess = '/registerSuccess';
 
   //HOME
   static const start = '/start';

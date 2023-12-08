@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "174751530690",
+    "project_id": "move-e-care",
+    "storage_bucket": "move-e-care.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:174751530690:android:b3bf0ede7aaaad80e0055b",
+        "android_client_info": {
+          "package_name": "br.com.movecare.movecare"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBoKlHZjHOnrsWZrRagiwT_YEzx2IYIHl0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

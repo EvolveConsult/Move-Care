@@ -30,7 +30,8 @@ class AppBottomSheet<T> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 _topBottomSheet(context),
-                if (title != null) ...[const SizedBox(height: 12), title, const SizedBox(height: 16)],
+                if (title != null) ...[const SizedBox(height: 12), title],
+                const SizedBox(height: 16),
                 Container(
                     constraints: BoxConstraints(
                       maxHeight: MediaQuery.sizeOf(context).height - View.of(context).viewPadding.top,

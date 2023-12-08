@@ -1,8 +1,11 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:loader_overlay/loader_overlay.dart';
 import 'package:movecare/app/core/app_routes.dart';
+import 'package:movecare/firebase_options.dart';
 import 'app/core/ui/theme/color_schemes.dart';
 import 'app/modules/auth/auth_module.dart';
 import 'app/modules/start/start_module.dart';
@@ -11,8 +14,10 @@ import 'app/modules/register/register_module.dart';
 import 'app/modules/splash/splash_module.dart';
 import 'app/modules/start/submodules/profile/submodules/contacts_us/contact_us_module.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
   SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.dark);
+  await _initializeFirebase();
   return runApp(ModularApp(module: AppModule(), child: const AppWidget()));
 }
 
@@ -26,14 +31,19 @@ class AppWidget extends StatelessWidget {
   const AppWidget({super.key});
   @override
   Widget build(BuildContext context) {
-    return MaterialApp.router(
-      title: 'Move & Care',
-      theme: ThemeData(useMaterial3: true, colorScheme: lightColorScheme),
-      darkTheme: ThemeData(useMaterial3: true, colorScheme: lightColorScheme),
-      routerConfig: Modular.routerConfig,
-      debugShowCheckedModeBanner: false,
-      scaffoldMessengerKey: AppGlobalKeys.scaffoldMessengerKey,
-      key: AppGlobalKeys.globalKey,
+    Modular.setNavigatorKey(AppGlobalKeys.navigatorKey);
+    return GlobalLoaderOverlay(
+      useDefaultLoading: false,
+      overlayWidgetBuilder: (progress) => const Center(child: CircularProgressIndicator.adaptive()),
+      child: MaterialApp.router(
+        title: 'Move & Care',
+        theme: ThemeData(useMaterial3: true, colorScheme: lightColorScheme),
+        darkTheme: ThemeData(useMaterial3: true, colorScheme: lightColorScheme),
+        routerConfig: Modular.routerConfig,
+        debugShowCheckedModeBanner: false,
+        scaffoldMessengerKey: AppGlobalKeys.scaffoldMessengerKey,
+        key: AppGlobalKeys.globalKey,
+      ),
     );
   }
 }
@@ -51,4 +61,18 @@ class AppModule extends Module {
     r.module(Modular.initialRoute, module: RegisterModule());
     r.module(Modular.initialRoute, module: ContactUsModule());
   }
+}
+
+Future<void> _initializeFirebase() async {
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+
+  // FirebaseCrashlytics.instance.setCrashlyticsCollectionEnabled(true);
+  // FlutterError.onError = (errorDetails) {
+  //   FirebaseCrashlytics.instance.recordFlutterFatalError(errorDetails);
+  // };
+
+  // PlatformDispatcher.instance.onError = (error, stack) {
+  //   FirebaseCrashlytics.instance.recordError(error, stack, fatal: true);
+  //   return true;
+  // };
 }

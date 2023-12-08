@@ -18,6 +18,12 @@ dependencies:
   flutter_svg: ^2.0.9
   cached_network_image: ^3.3.0
   pinput: ^3.0.1
+  firebase_core: ^2.24.0
+  firebase_auth: ^4.15.0
+  flutter_html: ^3.0.0-beta.2
+  cloud_firestore: ^4.13.3
+  dartz: ^0.10.1
+  loader_overlay: ^3.0.4
 
 dev_dependencies:
   flutter_test:
