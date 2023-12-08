@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:movecare/app/core/ui/theme/icons.dart';
+import 'package:movecare/app/core/ui/theme/app_icons.dart';
 
 class AppNavigationDestinationWidget extends StatelessWidget {
   const AppNavigationDestinationWidget({super.key, required this.label, required this.pathSvg});

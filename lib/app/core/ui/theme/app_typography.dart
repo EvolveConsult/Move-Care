@@ -24,6 +24,7 @@ class AppText extends StatelessWidget {
     this.maxLine,
     this.textStyle,
     this.textAlign,
+    this.textOverflow,
   });
 
   final String text;
@@ -31,9 +32,11 @@ class AppText extends StatelessWidget {
   final int? maxLine;
   final TextStyle? textStyle;
   final TextAlign? textAlign;
+  final TextOverflow? textOverflow;
   @override
   Widget build(BuildContext context) {
     return Text(
+      overflow: textOverflow,
       text,
       textScaler: TextScaler.linear(getScaler(size)),
       style: GoogleFonts.inter(textStyle: textStyle),

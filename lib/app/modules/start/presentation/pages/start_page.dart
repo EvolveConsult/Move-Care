@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../../core/ui/theme/icons.dart';
+import '../../../../core/ui/theme/app_icons.dart';
 import '../../../../core/ui/widgets/app_bar_widget.dart';
 import '../../../../core/ui/widgets/app_navigation_destination_widget.dart';
 import '../../../../core/ui/widgets/app_scaffold_widget.dart';

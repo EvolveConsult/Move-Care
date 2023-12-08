@@ -29,6 +29,7 @@ class AppRoutes {
 
   //GUIDANCE_FOR_USERS
   static const guidanceForUsers = '/guidanceForUsers';
+  static const guidanceForUsersDetails = '$guidanceForUsers/details';
 
   //GUIDANCE_FOR_USERS
   static const contactUs = '/contactUs';

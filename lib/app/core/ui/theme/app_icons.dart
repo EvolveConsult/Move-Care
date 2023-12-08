@@ -13,6 +13,7 @@ class AppIcons {
   static const terms = '$_path/terms.svg';
   static const exit = '$_path/exit.svg';
   static const star = '$_path/star.svg';
+  static const arrowRight = '$_path/arrowRight.svg';
 }
 
 extension AppIconsExt on String {

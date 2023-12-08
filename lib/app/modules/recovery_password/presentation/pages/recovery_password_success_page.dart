@@ -3,7 +3,7 @@ import 'package:flutter_modular/flutter_modular.dart';
 
 import '../../../../core/app_routes.dart';
 import '../../../../core/ui/theme/app_typography.dart';
-import '../../../../core/ui/theme/icons.dart';
+import '../../../../core/ui/theme/app_icons.dart';
 import '../../../../core/ui/widgets/app_button_widget.dart';
 import '../../../../core/ui/widgets/app_scaffold_widget.dart';
 

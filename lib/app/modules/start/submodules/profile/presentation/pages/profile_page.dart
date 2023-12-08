@@ -5,7 +5,7 @@ import 'package:movecare/app/core/ui/theme/app_typography.dart';
 import 'package:movecare/app/core/ui/widgets/app_scaffold_widget.dart';
 
 import '../../../../../../core/app_routes.dart';
-import '../../../../../../core/ui/theme/icons.dart';
+import '../../../../../../core/ui/theme/app_icons.dart';
 import '../../../../../../core/ui/widgets/app_bar_widget.dart';
 
 class ProfilePage extends StatefulWidget {
