@@ -7,8 +7,6 @@ class GuidanceForUsersPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AppScaffoldWidget(
-      backgroundColor: Theme.of(context).colorScheme.onBackground,
-      hasAppBar: false,
       pagePadding: EdgeInsets.zero,
       page: const Text('GuidanceForUsersPage'),
     );

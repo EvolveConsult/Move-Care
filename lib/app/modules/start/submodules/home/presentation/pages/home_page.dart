@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:intersperse/intersperse.dart';
+import 'package:movecare/app/core/ui/widgets/app_bar_widget.dart';
 import 'package:movecare/app/core/ui/widgets/app_scaffold_widget.dart';
 
 import '../../../../../../core/app_routes.dart';
@@ -34,7 +35,7 @@ class _HomePageState extends State<HomePage> {
         label: 'Boas-vindas',
       ),
       _HomeOption(
-        onTap: () {},
+        onTap: () => Modular.to.pushNamed(AppRoutes.guidanceForUsers),
         icon: Icon(size: 20, Icons.arrow_forward_ios_rounded, color: colorButtons),
         label: 'Orientações ao usuário',
       ),
@@ -49,7 +50,9 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return AppScaffoldWidget(
       pagePadding: const EdgeInsets.all(0),
-      hasAppBar: false,
+      leadingActionType: LeadingActionType.none,
+      showAppTopPageWidget: true,
+      canPop: false,
       page: ScrollConfiguration(
         behavior: const ScrollBehavior().copyWith(overscroll: false),
         child: CustomScrollView(

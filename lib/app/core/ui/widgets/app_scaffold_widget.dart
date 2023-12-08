@@ -26,32 +26,33 @@ class AppScaffoldWidget extends StatefulWidget {
   final bool extendBody;
   final LeadingActionType leadingActionType;
   final ValueNotifier<DefaultBottomSheet?>? bottomSheetAlert;
+  final bool? showAppTopPageWidget;
 
-  const AppScaffoldWidget({
-    super.key,
-    this.onTap,
-    this.floatingActionButton,
-    this.handleError,
-    this.title = '',
-    required this.page,
-    this.leadingActive = true,
-    this.leadingAction,
-    this.actionsAppBar = const [],
-    this.pagePadding = const EdgeInsets.symmetric(horizontal: 20),
-    this.resizeToAvoidBottomInset = true,
-    this.bottomSheet,
-    this.bottomNavigationBar,
-    this.leadingActionWidget,
-    this.backgroundColorAppBar,
-    this.canPop = true,
-    this.onWillPop,
-    this.hasAppBar = true,
-    this.extendBodyBehindAppBar = false,
-    this.backgroundColor,
-    this.extendBody = false,
-    this.leadingActionType = LeadingActionType.previous,
-    this.bottomSheetAlert,
-  });
+  const AppScaffoldWidget(
+      {super.key,
+      this.onTap,
+      this.floatingActionButton,
+      this.handleError,
+      this.title = '',
+      required this.page,
+      this.leadingActive = true,
+      this.leadingAction,
+      this.actionsAppBar = const [],
+      this.pagePadding = const EdgeInsets.symmetric(horizontal: 20),
+      this.resizeToAvoidBottomInset = true,
+      this.bottomSheet,
+      this.bottomNavigationBar,
+      this.leadingActionWidget,
+      this.backgroundColorAppBar,
+      this.canPop = true,
+      this.onWillPop,
+      this.hasAppBar = true,
+      this.extendBodyBehindAppBar = false,
+      this.backgroundColor,
+      this.extendBody = false,
+      this.leadingActionType = LeadingActionType.previous,
+      this.bottomSheetAlert,
+      this.showAppTopPageWidget});
 
   @override
   State<AppScaffoldWidget> createState() => _AppScaffoldWidgetState();
@@ -113,6 +114,7 @@ class _AppScaffoldWidgetState extends State<AppScaffoldWidget> {
       leadingActionWidget: widget.leadingActionWidget,
       appTitle: widget.title,
       leadingAction: widget.leadingAction,
+      showAppTopPageWidget: widget.showAppTopPageWidget,
     );
   }
 }

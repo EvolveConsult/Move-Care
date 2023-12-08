@@ -2,6 +2,8 @@ import '../theme/app_typography.dart';
 import 'app_button_previus_widget.dart';
 import 'package:flutter/material.dart';
 
+import 'app_top_page_widget.dart';
+
 enum LeadingActionType { previous, none }
 
 class AppBarWidget extends StatelessWidget implements PreferredSizeWidget {
@@ -13,6 +15,7 @@ class AppBarWidget extends StatelessWidget implements PreferredSizeWidget {
   final Color? backgroundColorAppBar;
   final Color? closeButtonColor;
   final Widget? leadingActionWidget;
+  final bool? showAppTopPageWidget;
 
   const AppBarWidget({
     super.key,
@@ -23,6 +26,7 @@ class AppBarWidget extends StatelessWidget implements PreferredSizeWidget {
     this.leadingActionWidget,
     this.backgroundColorAppBar,
     this.closeButtonColor,
+    this.showAppTopPageWidget,
     required this.leadingActionType,
   });
 
@@ -35,6 +39,12 @@ class AppBarWidget extends StatelessWidget implements PreferredSizeWidget {
       backgroundColor: backgroundColorAppBar ?? Theme.of(context).colorScheme.background,
       leading: leadingWidget(),
       actions: actionsAppBar,
+      flexibleSpace: showAppTopPageWidget == true
+          ? CustomPaint(
+              size: Size(MediaQuery.of(context).size.width, 100),
+              painter: AppTopPageWidget(),
+            )
+          : null,
       title: AppText(
         appTitle,
         size: AppTextSize.verySmall,
