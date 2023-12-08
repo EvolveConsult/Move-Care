@@ -1,7 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 
+import '../../../../../core/domain/erros/errors_comons.dart';
 import '../../../../../core/domain/erros/failure.dart';
-import '../../../domain/errors.dart';
 import '../recovery_password_datasource.dart';
 
 class RecoveryPasswordDatasourceFirebaseImp implements RecoveryPasswordDatasource {
@@ -15,8 +15,8 @@ class RecoveryPasswordDatasourceFirebaseImp implements RecoveryPasswordDatasourc
         'auth/user-not-found' => UserNotFound(),
         _ => ServerFailure(),
       };
-    } catch (e, s) {
-      throw UnknownError(stackTrace: s, errorLog: e.toString());
+    } catch (e) {
+      rethrow;
     }
   }
 }

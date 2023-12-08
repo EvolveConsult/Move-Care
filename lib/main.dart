@@ -31,6 +31,7 @@ class AppWidget extends StatelessWidget {
   const AppWidget({super.key});
   @override
   Widget build(BuildContext context) {
+    Modular.setInitialRoute(AppRoutes.start);
     Modular.setNavigatorKey(AppGlobalKeys.navigatorKey);
     return GlobalLoaderOverlay(
       useDefaultLoading: false,
@@ -49,6 +50,9 @@ class AppWidget extends StatelessWidget {
 }
 
 class AppModule extends Module {
+  @override
+  List<Module> get imports => [AuthModule()];
+
   @override
   void binds(i) {}
 

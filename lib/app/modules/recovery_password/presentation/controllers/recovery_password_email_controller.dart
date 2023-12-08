@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:movecare/app/core/app_routes.dart';
+import 'package:movecare/app/core/ui/widgets/app_loading.dart';
 
 import '../../domain/usecases/recovery_with_email_usecase.dart';
 
@@ -15,7 +16,9 @@ class RecoveryPasswordEmailController {
   Future<void> onConfirm() async {
     if (validate() == false) return;
 
+    showAppLoading();
     final result = await recoveryWithEmailUsecase(email.text);
+    hideAppLoading();
 
     result.fold((l) {
       Modular.to.pushNamed(AppRoutes.recoveryPasswordSuccess);

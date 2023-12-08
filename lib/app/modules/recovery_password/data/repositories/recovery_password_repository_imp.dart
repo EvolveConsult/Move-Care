@@ -16,8 +16,8 @@ class RecoveryPasswordRepositoryImp implements RecoveryPasswordRepository {
       return const Right(unit);
     } on Failure catch (e) {
       return Left(e);
-    } catch (_) {
-      return Left(UnknownError());
+    } catch (e, s) {
+      return Left(UnknownError(stackTrace: s, errorLog: e.toString()));
     }
   }
 }
