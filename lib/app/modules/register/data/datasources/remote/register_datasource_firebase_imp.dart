@@ -1,5 +1,4 @@
 import 'package:firebase_auth/firebase_auth.dart';
-
 import '../../../../../core/domain/erros/failure.dart';
 import '../../../domain/entities/create_user_request_entity.dart';
 import '../../../domain/errors.dart';

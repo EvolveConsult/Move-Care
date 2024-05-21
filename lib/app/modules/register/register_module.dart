@@ -1,4 +1,5 @@
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:movecare/app/modules/shared/shared_module.dart';
 
 import '../../core/app_routes.dart';
 import 'data/datasources/register_datasource.dart';
@@ -11,6 +12,8 @@ import 'presentation/pages/register_page.dart';
 import 'presentation/pages/register_success_page.dart';
 
 class RegisterModule extends Module {
+  @override
+  List<Module> get imports => [SharedModule()];
   @override
   void binds(i) {
     /* DATASOURCE */

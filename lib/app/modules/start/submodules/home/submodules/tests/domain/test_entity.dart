@@ -1,9 +1,9 @@
 class TestsEntity {
   final String title;
-  final String pathImage;
+  // final String pathImage;
   final List<QuestionEntity> questions;
 
-  TestsEntity({required this.title, required this.pathImage, required this.questions});
+  TestsEntity({required this.title, required this.questions});
 }
 
 class QuestionEntity {

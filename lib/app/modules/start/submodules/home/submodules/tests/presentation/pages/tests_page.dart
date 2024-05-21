@@ -22,8 +22,8 @@ class _TestsPageState extends State<TestsPage> {
     super.didChangeDependencies();
     tests = [
       TestsEntity(
-          title: 'Teste 1 - Avaliação de habilidades intelectuais',
-          pathImage: 'https://picsum.photos/200/300',
+          title:
+              'Teste 1 - Avaliação de habilidades intelectuais com texto maio para exemplicar uma quebra de linhaaaaaa maio para exemplicar uma quebra de linhaaaaaa',
           questions: [
             QuestionEntity(title: '1 Pergunta:', options: [
               QuestionOptionsEntity(label: '1 Pergunta - 1 opção'),
@@ -56,7 +56,7 @@ class _TestsPageState extends State<TestsPage> {
               QuestionOptionsEntity(label: '5 Pergunta - 4 opção'),
             ]),
           ]),
-      TestsEntity(title: 'Teste 2 - Avaliação teste', pathImage: 'https://picsum.photos/200/300', questions: [
+      TestsEntity(title: 'Teste 2 - Avaliação teste', questions: [
         QuestionEntity(title: '2 Pergunta:', options: [
           QuestionOptionsEntity(label: '1 opção'),
           QuestionOptionsEntity(label: '2 opção'),
@@ -72,9 +72,9 @@ class _TestsPageState extends State<TestsPage> {
     return AppScaffoldWidget(
       title: 'Testes',
       page: ListView.separated(
-          padding: const EdgeInsets.symmetric(vertical: 24),
+          padding: const EdgeInsets.symmetric(vertical: 20),
           itemBuilder: (_, index) => _ItemsTests(test: tests[index]),
-          separatorBuilder: (_, __) => const SizedBox(height: 16),
+          separatorBuilder: (_, __) => const SizedBox(height: 20),
           itemCount: tests.length),
     );
   }
@@ -98,40 +98,78 @@ class _ItemsTests extends StatelessWidget {
           )
         ],
       ),
-      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
-      child: IntrinsicHeight(
-        child: Row(
-          children: [
-            ClipRRect(
-              borderRadius: BorderRadius.circular(12),
-              child: SizedBox(
-                width: 100,
-                height: 80,
-                child: CachedNetworkImage(
-                  fit: BoxFit.fill,
-                  imageUrl: test.pathImage,
-                  progressIndicatorBuilder: (context, url, downloadProgress) =>
-                      Center(child: CircularProgressIndicator.adaptive(value: downloadProgress.progress)),
-                  errorWidget: (context, url, error) => const Icon(Icons.error), //TODO mudar para logo do app
-                ),
-              ),
-            ),
-            const SizedBox(width: 12),
-            Expanded(child: Align(alignment: Alignment.topCenter, child: AppText(test.title, size: AppTextSize.small))),
-            const SizedBox(width: 8),
-            Align(
-                alignment: Alignment.bottomRight,
-                child: GestureDetector(
-                  onTap: () => Modular.to.pushNamed(AppRoutes.answerTest, arguments: test),
-                  child: Container(
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(8), color: Theme.of(context).colorScheme.secondary),
-                    padding: const EdgeInsets.symmetric(vertical: 4, horizontal: 8),
-                    child: const AppText('Iniciar', size: AppTextSize.small),
+      padding: const EdgeInsets.fromLTRB(0, 0, 12, 12),
+      child: Column(
+        children: [
+          SizedBox(
+            height: 100,
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                ClipRRect(
+                  borderRadius: BorderRadius.circular(12),
+                  child: SizedBox(
+                    width: 100,
+                    height: 100,
+                    child: CachedNetworkImage(
+                      fit: BoxFit.fill,
+                      imageUrl: 'https://picsum.photos/200/300',
+                      progressIndicatorBuilder: (context, url, downloadProgress) =>
+                          Center(child: CircularProgressIndicator.adaptive(value: downloadProgress.progress)),
+                      errorWidget: (context, url, error) => const Icon(Icons.error), //TODO mudar para logo do app
+                    ),
                   ),
-                ))
-          ],
-        ),
+                ),
+                const SizedBox(width: 12),
+                Expanded(
+                  child: Padding(
+                    padding: const EdgeInsets.only(top: 4),
+                    child: Align(
+                        alignment: Alignment.topCenter,
+                        child: AppText(test.title,
+                            size: AppTextSize.small, textOverflow: TextOverflow.ellipsis, maxLine: 4)),
+                  ),
+                ),
+              ],
+            ),
+          ),
+          const SizedBox(height: 12),
+          Padding(
+            padding: const EdgeInsets.only(left: 12),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                _ButtonTest(label: 'TDC', test: test),
+                _ButtonTest(label: 'TEA', test: test),
+                _ButtonTest(label: 'TDAH', test: test),
+              ],
+            ),
+          )
+        ],
+      ),
+    );
+  }
+}
+
+class _ButtonTest extends StatelessWidget {
+  const _ButtonTest({required this.label, required this.test});
+  final String label;
+  final TestsEntity test;
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: () => Modular.to.pushNamed(AppRoutes.answerTest, arguments: test),
+      child: Column(
+        children: [
+          AppText(label),
+          Container(
+            decoration:
+                BoxDecoration(borderRadius: BorderRadius.circular(8), color: Theme.of(context).colorScheme.secondary),
+            padding: const EdgeInsets.symmetric(vertical: 4, horizontal: 8),
+            child: const AppText('Iniciar', size: AppTextSize.small),
+          )
+        ],
       ),
     );
   }

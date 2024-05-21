@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:movecare/app/core/app_routes.dart';
+import 'package:movecare/app/core/ui/theme/app_icons.dart';
 import 'package:movecare/app/core/ui/theme/app_typography.dart';
 import 'package:movecare/app/core/ui/widgets/app_scaffold_widget.dart';
 
@@ -26,9 +27,14 @@ class SplashPage extends StatelessWidget {
           const SizedBox(height: 40),
           const Spacer(),
           Container(
-            height: 140,
-            width: 140,
-            color: Theme.of(context).colorScheme.secondary,
+            padding: const EdgeInsets.all(8),
+            height: 160,
+            width: 160,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(140),
+              color: Theme.of(context).colorScheme.primary,
+            ),
+            child: AppIcons.logo.icon(),
           ),
           const SizedBox(height: 20),
           Padding(

@@ -9,12 +9,18 @@ import '../../../../core/domain/value_objects/quantity_minimum.dart';
 import '../../../../core/ui/theme/app_typography.dart';
 import '../../../../core/ui/widgets/app_loading.dart';
 import '../../../../core/ui/widgets/default_bottom_sheet.dart';
+
+import '../../../shared/domain/usecases/login_with_google_usecase.dart';
 import '../../domain/errors.dart';
 import '../../domain/usecases/create_user_usecase.dart';
 
 class RegisterController {
-  RegisterController({required this.createUserWithEmailAndPassword});
+  RegisterController({
+    required this.createUserWithEmailAndPassword,
+    required this.loginWithGoogleUsecase,
+  });
   final CreateUserUsecase createUserWithEmailAndPassword;
+  final LoginWithGoogleUsecase loginWithGoogleUsecase;
 
   final TextEditingController email = TextEditingController();
   final TextEditingController password = TextEditingController();
@@ -27,12 +33,9 @@ class RegisterController {
   final QuantityMinimum validatePassword = QuantityMinimum(minimum: 8, field: 'senha');
   ValueNotifier<DefaultBottomSheet?> bottomSheetAlert = ValueNotifier(null);
   ValueNotifier<bool> acceptContract = ValueNotifier(false);
+  ValueNotifier<bool> showErrorContract = ValueNotifier(false);
 
-  void onInit() {
-    acceptContract.addListener(() {
-      validate();
-    });
-  }
+  void onInit() {}
 
   Future<void> onConfirm() async {
     if (validate() == false) return;
@@ -58,6 +61,7 @@ class RegisterController {
 
   bool validate() {
     FocusManager.instance.primaryFocus?.unfocus();
+    showErrorContract.value = !acceptContract.value;
     if (formKey.currentState?.validate() == true && acceptContract.value) {
       enableButton.value = true;
     } else {
@@ -98,5 +102,18 @@ class RegisterController {
   void _errorDefault(String message) {
     bottomSheetAlert.value =
         DefaultBottomSheet(content: AppRichText(children: [TextSpan(text: message)]), confirmText: 'Entendi');
+  }
+
+  Future<void> loginWithGoogle() async {
+    showErrorContract.value = !acceptContract.value;
+    if (acceptContract.value == false) return;
+    showAppLoading();
+    final result = await loginWithGoogleUsecase();
+    hideAppLoading();
+    result.fold((l) {
+      _errorDefault(l.errorMessage);
+    }, (r) {
+      Modular.to.pushReplacementNamed(AppRoutes.start);
+    });
   }
 }

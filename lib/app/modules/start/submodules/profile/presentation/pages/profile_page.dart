@@ -1,6 +1,8 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:intersperse/intersperse.dart';
+import 'package:movecare/app/core/functions/open_url.dart';
 import 'package:movecare/app/core/ui/theme/app_typography.dart';
 import 'package:movecare/app/core/ui/widgets/app_scaffold_widget.dart';
 
@@ -18,7 +20,29 @@ class ProfilePage extends StatefulWidget {
 class _ProfilePageState extends State<ProfilePage> {
   List<_ProfileOption> profileOptions = [];
 
+  String nameUser = "";
+
   bool isIOS = false;
+
+  Future<void> _logout() async {
+    FirebaseAuth.instance.signOut();
+    Modular.to.navigate(AppRoutes.splash);
+  }
+
+  @override
+  void initState() {
+    super.initState();
+
+    _fetchUserData();
+  }
+
+  void _fetchUserData() async {
+    final user = FirebaseAuth.instance.currentUser;
+    nameUser = user?.displayName ?? "";
+    setState(() {});
+  }
+
+  Future<void> _rateApp() async {}
 
   @override
   void didChangeDependencies() {
@@ -31,17 +55,14 @@ class _ProfilePageState extends State<ProfilePage> {
           icon: AppIcon(icon: AppIcons.mail, color: colorButtons),
           label: 'Fale conosco'),
       _ProfileOption(
-          onTap: () => Modular.to.pushNamed(AppRoutes.tests),
+          onTap: _rateApp,
           icon: AppIcon(icon: AppIcons.star, color: colorButtons),
           label: isIOS ? 'Avaliar na Apple Store' : 'Avaliar na Google Play'),
       _ProfileOption(
-          onTap: () => Modular.to.pushNamed(AppRoutes.tests),
+          onTap: onTapTerms,
           icon: AppIcon(icon: AppIcons.terms, color: colorButtons),
           label: 'Política de privacidade e Termos de uso'),
-      _ProfileOption(
-          onTap: () => Modular.to.pushNamed(AppRoutes.tests),
-          icon: AppIcon(icon: AppIcons.exit, color: colorButtons),
-          label: 'Sair'),
+      _ProfileOption(onTap: _logout, icon: AppIcon(icon: AppIcons.exit, color: colorButtons), label: 'Sair'),
     ];
   }
 
@@ -65,9 +86,25 @@ class _ProfilePageState extends State<ProfilePage> {
                   mainAxisSize: MainAxisSize.min,
                   children: [
                     SizedBox(height: MediaQuery.of(context).padding.top + 16),
-                    Center(child: Container(height: 140, width: 140, color: Theme.of(context).colorScheme.primary)),
+                    Center(
+                        child: Container(
+                      padding: const EdgeInsets.all(8),
+                      height: 140,
+                      width: 140,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(140),
+                        color: Theme.of(context).colorScheme.primary,
+                      ),
+                      child: AppIcons.logo.icon(),
+                    )),
                     const SizedBox(height: 12),
-                    const AppText('Maria Maria', size: AppTextSize.great),
+                    AppText(
+                      nameUser,
+                      size: AppTextSize.great,
+                      textOverflow: TextOverflow.ellipsis,
+                      maxLine: 2,
+                      textAlign: TextAlign.center,
+                    ),
                     const SizedBox(height: 12),
                   ],
                 ),

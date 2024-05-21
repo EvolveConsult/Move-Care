@@ -6,21 +6,45 @@ import 'package:movecare/app/core/ui/widgets/app_button_widget.dart';
 import 'package:movecare/app/core/ui/widgets/app_scaffold_widget.dart';
 import 'package:movecare/app/core/ui/widgets/app_text_form_field_widget.dart';
 import 'package:movecare/app/core/ui/widgets/continue_with_google_widget.dart';
+import 'package:movecare/app/core/ui/widgets/default_bottom_sheet.dart';
 
 import '../../../../core/domain/value_objects/email.dart';
+import '../../../shared/presentation/widgets/accept_terms_widget.dart';
 import '../controllers/auth_controller.dart';
 
-class AuthPage extends StatelessWidget {
+class AuthPage extends StatefulWidget {
   const AuthPage({super.key, required this.controller});
 
   final AuthController controller;
+
+  @override
+  State<AuthPage> createState() => _AuthPageState();
+}
+
+class _AuthPageState extends State<AuthPage> {
+  void _confirmLoginWithGoogle() {
+    widget.controller.bottomSheetAlert.value = DefaultBottomSheet(
+      content: AcceptTermsWidget(acceptContract: widget.controller.acceptContract),
+      cancelText: "Cancelar",
+      confirmText: "Continuar",
+      title: "Termos",
+      onConfirm: () {
+        Modular.to.pop();
+        widget.controller.loginWithGoogle();
+      },
+      onCancel: () {
+        widget.controller.acceptContract.value = false;
+        Modular.to.pop();
+      },
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
     return AppScaffoldWidget(
       backgroundColor: Theme.of(context).colorScheme.onBackground,
       backgroundColorAppBar: Theme.of(context).colorScheme.onBackground,
-      bottomSheetAlert: controller.bottomSheetAlert,
+      bottomSheetAlert: widget.controller.bottomSheetAlert,
       page: ScrollConfiguration(
         behavior: const ScrollBehavior().copyWith(overscroll: false),
         child: CustomScrollView(
@@ -39,11 +63,11 @@ class AuthPage extends StatelessWidget {
                     validator: [Email()],
                     autovalidateMode: AutovalidateMode.onUserInteraction,
                     keyboardType: TextInputType.emailAddress,
-                    controller: controller.email,
+                    controller: widget.controller.email,
                   ),
                   const SizedBox(height: 20),
                   AppTextFormFieldPasswordWidget(
-                    controller: controller.password,
+                    controller: widget.controller.password,
                     labelText: 'Senha',
                     hintText: 'Digite a senha',
                   ),
@@ -62,7 +86,7 @@ class AuthPage extends StatelessWidget {
                   const SizedBox(height: 20),
                   const AppDivider(text: 'ou'),
                   const SizedBox(height: 16),
-                  ContinueWithGoogleWidget(onTap: () {}),
+                  ContinueWithGoogleWidget(onTap: _confirmLoginWithGoogle),
                   const SizedBox(height: 20),
                 ],
               ),
@@ -72,7 +96,7 @@ class AuthPage extends StatelessWidget {
               child: Column(
                 children: [
                   const Spacer(),
-                  AppButton(text: 'Entrar', onTap: controller.onConfirm),
+                  AppButton(text: 'Entrar', onTap: widget.controller.onConfirm),
                   SizedBox(height: MediaQuery.of(context).padding.bottom + 20),
                 ],
               ),

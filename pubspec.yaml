@@ -4,7 +4,7 @@ description: A new Flutter project.
 version: 1.0.0+1
 
 environment:
-  sdk: '>=3.2.0 <4.0.0'
+  sdk: ">=3.2.0 <4.0.0"
 
 dependencies:
   flutter:
@@ -18,12 +18,14 @@ dependencies:
   flutter_svg: ^2.0.9
   cached_network_image: ^3.3.0
   pinput: ^3.0.1
-  firebase_core: ^2.24.0
-  firebase_auth: ^4.15.0
+  firebase_core: ^2.31.0
+  firebase_auth: ^4.19.5
   flutter_html: ^3.0.0-beta.2
   cloud_firestore: ^4.13.3
   dartz: ^0.10.1
   loader_overlay: ^3.0.4
+  google_sign_in: ^6.2.1
+  firebase_remote_config: ^4.4.6
 
 dev_dependencies:
   flutter_test:
@@ -32,13 +34,12 @@ dev_dependencies:
   flutter_launcher_icons: ^0.13.1
   flutter_native_splash: ^2.3.5
 
-
 # flutter_native_splash:
 #   color: "#ffffff"
 #   image: "assets/launcher_icon/icon_splash.png"
 #   android: true
 #   ios: true
-#   android_12: 
+#   android_12:
 #     image: "assets/launcher_icon/icon_splash_android12.png"
 
 # flutter_launcher_icons:
@@ -48,7 +49,6 @@ dev_dependencies:
 #   android: true
 #   ios: true
 #   remove_alpha_ios: true
-
 
 flutter:
   uses-material-design: true

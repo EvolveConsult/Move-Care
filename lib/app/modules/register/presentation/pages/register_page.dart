@@ -1,16 +1,15 @@
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:intersperse/intersperse.dart';
 import 'package:movecare/app/core/domain/value_objects/equality.dart';
 import 'package:movecare/app/core/domain/value_objects/required.dart';
 import 'package:movecare/app/core/ui/theme/app_typography.dart';
 import 'package:movecare/app/core/ui/widgets/app_button_widget.dart';
-import 'package:movecare/app/core/ui/widgets/app_checkbox_widget.dart';
 import 'package:movecare/app/core/ui/widgets/app_scaffold_widget.dart';
 import 'package:movecare/app/core/ui/widgets/app_text_form_field_widget.dart';
 import 'package:movecare/app/core/ui/widgets/continue_with_google_widget.dart';
 
 import '../../../../core/domain/value_objects/email.dart';
+import '../../../shared/presentation/widgets/accept_terms_widget.dart';
 import '../controllers/register_controller.dart';
 
 class RegisterPage extends StatefulWidget {
@@ -36,7 +35,6 @@ class _RegisterPageState extends State<RegisterPage> {
       backgroundColor: Theme.of(context).colorScheme.onBackground,
       backgroundColorAppBar: Theme.of(context).colorScheme.onBackground,
       bottomSheetAlert: widget.controller.bottomSheetAlert,
-      onTap: widget.controller.validate,
       page: Form(
         key: widget.controller.formKey,
         child: ScrollConfiguration(
@@ -97,21 +95,23 @@ class _RegisterPageState extends State<RegisterPage> {
                     const SizedBox(height: 20),
                     const AppDivider(text: 'ou'),
                     const SizedBox(height: 16),
-                    ContinueWithGoogleWidget(onTap: () {}),
+                    ContinueWithGoogleWidget(onTap: widget.controller.loginWithGoogle),
                     const SizedBox(height: 12),
-                    AppRichText(
-                      children: [
-                        WidgetSpan(
-                            child: AppCheckbox(notifier: widget.controller.acceptContract),
-                            alignment: PlaceholderAlignment.middle),
-                        const TextSpan(text: '  Li e concordo com as'),
-                        TextSpan(
-                          text: ' política de privacidade e termos de uso ',
-                          style: TextStyle(color: Theme.of(context).colorScheme.primary),
-                          recognizer: TapGestureRecognizer()..onTap = widget.controller.onTapContract,
-                        ),
-                        const TextSpan(text: 'do Move & Care.'),
-                      ],
+                    AcceptTermsWidget(acceptContract: widget.controller.acceptContract),
+                    ValueListenableBuilder(
+                      valueListenable: widget.controller.showErrorContract,
+                      builder: (context, value, child) {
+                        return Visibility(
+                            visible: value,
+                            child: Padding(
+                              padding: const EdgeInsets.only(top: 8),
+                              child: AppText(
+                                'Você deve aceitar os termos para continuar',
+                                size: AppTextSize.normal,
+                                textStyle: TextStyle(color: Theme.of(context).colorScheme.error),
+                              ),
+                            ));
+                      },
                     ),
                     const SizedBox(height: 20),
                   ],
@@ -122,11 +122,7 @@ class _RegisterPageState extends State<RegisterPage> {
                 child: Column(
                   children: [
                     const Spacer(),
-                    ValueListenableBuilder(
-                        valueListenable: widget.controller.enableButton,
-                        builder: (_, value, __) {
-                          return AppButton(text: 'Criar conta', onTap: value ? widget.controller.onConfirm : null);
-                        }),
+                    AppButton(text: 'Criar conta', onTap: widget.controller.onConfirm),
                     SizedBox(height: MediaQuery.of(context).padding.bottom + 20),
                   ],
                 ),

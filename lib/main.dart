@@ -6,6 +6,7 @@ import 'package:flutter_modular/flutter_modular.dart';
 import 'package:loader_overlay/loader_overlay.dart';
 import 'package:movecare/app/core/app_routes.dart';
 import 'package:movecare/firebase_options.dart';
+import 'app/core/services/app_remote_config.dart';
 import 'app/core/ui/theme/color_schemes.dart';
 import 'app/modules/auth/auth_module.dart';
 import 'app/modules/start/start_module.dart';
@@ -69,7 +70,7 @@ class AppModule extends Module {
 
 Future<void> _initializeFirebase() async {
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
-
+  AppRemoteConfig().initialize();
   // FirebaseCrashlytics.instance.setCrashlyticsCollectionEnabled(true);
   // FlutterError.onError = (errorDetails) {
   //   FirebaseCrashlytics.instance.recordFlutterFatalError(errorDetails);

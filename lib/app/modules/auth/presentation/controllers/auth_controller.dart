@@ -7,13 +7,18 @@ import '../../../../core/app_routes.dart';
 import '../../../../core/ui/theme/app_typography.dart';
 import '../../../../core/ui/widgets/app_loading.dart';
 import '../../../../core/ui/widgets/default_bottom_sheet.dart';
+import '../../../shared/domain/usecases/login_with_google_usecase.dart';
 import '../../domain/errors.dart';
 import '../../domain/usecases/check_authorization_usecase.dart';
 import '../../domain/usecases/login_with_email_and_password_usecase.dart';
 
 class AuthController {
-  AuthController({required this.loginWithEmailAndPasswordUsecase, required this.checkAuthorizationUsecase});
-
+  AuthController({
+    required this.loginWithEmailAndPasswordUsecase,
+    required this.checkAuthorizationUsecase,
+    required this.loginWithGoogleUsecase,
+  });
+  final LoginWithGoogleUsecase loginWithGoogleUsecase;
   final LoginWithEmailAndPasswordUsecase loginWithEmailAndPasswordUsecase;
   final CheckAuthorizationUsecase checkAuthorizationUsecase;
 
@@ -21,6 +26,8 @@ class AuthController {
   final TextEditingController password = TextEditingController();
 
   ValueNotifier<DefaultBottomSheet?> bottomSheetAlert = ValueNotifier(null);
+
+  ValueNotifier<bool> acceptContract = ValueNotifier(false);
 
   Future<void> onConfirm() async {
     showAppLoading();
@@ -86,7 +93,7 @@ class AuthController {
       title: 'E-mail não verificado',
       content: const AppRichText(
         children: [
-          TextSpan(text: 'Você precisa confirma seu e-mail através do link enviado.\nVerifique a caixa de spam.'),
+          TextSpan(text: 'Você precisa confirmar seu e-mail através do link enviado.\nVerifique a caixa de spam.'),
         ],
       ),
       confirmText: 'Entendi',
@@ -101,5 +108,14 @@ class AuthController {
   Future<bool> get isLogged async {
     final result = await checkAuthorizationUsecase();
     return result.fold((l) => false, (r) => r);
+  }
+
+  Future<void> loginWithGoogle() async {
+    if (acceptContract.value == false) return;
+    acceptContract.value = false;
+    showAppLoading();
+    final result = await loginWithGoogleUsecase();
+    hideAppLoading();
+    result.fold((l) => _errorDefault(l.errorMessage), (r) => Modular.to.pushReplacementNamed(AppRoutes.start));
   }
 }

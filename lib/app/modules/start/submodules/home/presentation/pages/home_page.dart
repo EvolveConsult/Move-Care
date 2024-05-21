@@ -59,10 +59,19 @@ class _HomePageState extends State<HomePage> {
           physics: const ClampingScrollPhysics(),
           slivers: [
             SliverPadding(
-              padding: EdgeInsets.only(top: View.of(context).viewPadding.top, bottom: 20),
+              padding: EdgeInsets.only(top: View.of(context).viewPadding.top, bottom: 8),
               sliver: SliverToBoxAdapter(
                 child: Center(
-                  child: Container(height: 140, width: 140, color: Theme.of(context).colorScheme.secondary),
+                  child: Container(
+                    padding: const EdgeInsets.all(8),
+                    height: 140,
+                    width: 140,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(140),
+                      color: Theme.of(context).colorScheme.primary,
+                    ),
+                    child: AppIcons.logo.icon(),
+                  ),
                 ),
               ),
             ),
