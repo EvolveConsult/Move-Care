@@ -35,8 +35,8 @@ dev_dependencies:
   flutter_native_splash: ^2.3.5
 
 # flutter_native_splash:
-#   color: "#ffffff"
-#   image: "assets/launcher_icon/icon_splash.png"
+#   color: "#2C8CE4"
+#   image: "assets/launcher_icon/icon.png"
 #   android: true
 #   ios: true
 #   android_12:
@@ -50,8 +50,24 @@ dev_dependencies:
 #   ios: true
 #   remove_alpha_ios: true
 
+flutter_native_splash:
+  android: true
+  ios: true
+  color: "#2C8CE4"
+  image: "assets/launcher_icon/splash.png"
+  android_12:
+    color: "#2C8CE4"
+    image: "assets/launcher_icon/splash.png"
+
+flutter_launcher_icons:
+  image_path: "assets/launcher_icon/icon.png"
+  android: true
+  ios: true
+  remove_alpha_ios: true
+
 flutter:
   uses-material-design: true
   assets:
     - assets/images/
     - assets/icons/
+    - assets/launcher_icon/
