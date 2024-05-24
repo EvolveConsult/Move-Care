@@ -9,6 +9,7 @@ import 'package:movecare/app/core/ui/widgets/continue_with_google_widget.dart';
 import 'package:movecare/app/core/ui/widgets/default_bottom_sheet.dart';
 
 import '../../../../core/domain/value_objects/email.dart';
+import '../../../../core/ui/theme/app_icons.dart';
 import '../../../shared/presentation/widgets/accept_terms_widget.dart';
 import '../controllers/auth_controller.dart';
 
@@ -28,10 +29,7 @@ class _AuthPageState extends State<AuthPage> {
       cancelText: "Cancelar",
       confirmText: "Continuar",
       title: "Termos",
-      onConfirm: () {
-        Modular.to.pop();
-        widget.controller.loginWithGoogle();
-      },
+      onConfirm: widget.controller.loginWithGoogle,
       onCancel: () {
         widget.controller.acceptContract.value = false;
         Modular.to.pop();
@@ -55,7 +53,16 @@ class _AuthPageState extends State<AuthPage> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   const SizedBox(height: 20),
-                  Container(height: 140, width: 140, color: Theme.of(context).colorScheme.secondary),
+                  Container(
+                    padding: const EdgeInsets.all(8),
+                    height: 160,
+                    width: 160,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(140),
+                      color: Theme.of(context).colorScheme.primary,
+                    ),
+                    child: AppIcons.logo.icon(),
+                  ),
                   const SizedBox(height: 80),
                   AppTextFormField(
                     labelText: 'E-mail',

@@ -21,7 +21,7 @@ class RecoveryPasswordSuccessPage extends StatelessWidget {
           AppIcon(icon: AppIcons.mail, height: 140, width: 140, color: Theme.of(context).colorScheme.secondary),
           const SizedBox(height: 32),
           AppText(
-            'Você receberá um e-mail com instruções para recuperar a senha.\nVerifique a caixa de spam',
+            'Você receberá um e-mail com instruções para recuperar a senha.\nVerifique a caixa de entrada e a caixa de spam.',
             size: AppTextSize.normal,
             textStyle: TextStyle(color: Theme.of(context).colorScheme.onSecondary, fontWeight: FontWeight.w600),
             textAlign: TextAlign.center,

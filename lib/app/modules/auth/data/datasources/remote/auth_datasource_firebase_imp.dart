@@ -24,6 +24,7 @@ class AuthDatasourceFirebaseImp implements AuthDatasource {
         'user-not-found' => Unauthorized(),
         'invalid-email' => InvalidEmail(),
         'user-disabled' => UserDisabled(),
+        'invalid-credential' => Unauthorized(),
         _ => ServerFailure(),
       };
     } catch (_) {

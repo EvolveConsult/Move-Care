@@ -19,9 +19,9 @@ class _AcceptTermsWidgetState extends State<AcceptTermsWidget> {
     return AppRichText(
       children: [
         WidgetSpan(child: AppCheckbox(notifier: widget.acceptContract), alignment: PlaceholderAlignment.middle),
-        const TextSpan(text: '  Li e concordo com as'),
+        const TextSpan(text: '  Li e concordo com a'),
         TextSpan(
-          text: ' política de privacidade e termos de uso ',
+          text: ' política de privacidade e termo de uso ',
           style: TextStyle(color: Theme.of(context).colorScheme.primary),
           recognizer: TapGestureRecognizer()..onTap = onTapTerms,
         ),

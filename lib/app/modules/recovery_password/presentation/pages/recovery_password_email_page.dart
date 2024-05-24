@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:movecare/app/core/ui/theme/app_icons.dart';
 
 import '../../../../core/domain/value_objects/email.dart';
 import '../../../../core/ui/theme/app_typography.dart';
@@ -28,7 +29,11 @@ class RecoveryPasswordPage extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     const SizedBox(height: 20),
-                    Container(height: 140, width: 140, color: Theme.of(context).colorScheme.secondary),
+                    SizedBox(
+                      height: 140,
+                      width: 140,
+                      child: AppIcons.recoveryPassword.icon(),
+                    ),
                     const SizedBox(height: 52),
                     const AppText('Nos informe o seu e-mail para recuperação de senha.',
                         textStyle: TextStyle(fontWeight: FontWeight.w500)),
@@ -37,7 +42,6 @@ class RecoveryPasswordPage extends StatelessWidget {
                       labelText: 'E-mail',
                       hintText: 'Digite seu e-mail',
                       validator: [Email()],
-                      // autovalidateMode: AutovalidateMode.onUserInteraction,
                       keyboardType: TextInputType.emailAddress,
                       controller: controller.email,
                       onEditingComplete: controller.validate,

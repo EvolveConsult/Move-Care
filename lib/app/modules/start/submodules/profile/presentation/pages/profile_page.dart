@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 import 'package:intersperse/intersperse.dart';
 import 'package:movecare/app/core/functions/open_url.dart';
 import 'package:movecare/app/core/ui/theme/app_typography.dart';
@@ -25,8 +26,19 @@ class _ProfilePageState extends State<ProfilePage> {
   bool isIOS = false;
 
   Future<void> _logout() async {
-    FirebaseAuth.instance.signOut();
-    Modular.to.navigate(AppRoutes.splash);
+    try {
+      final googleSignIn = GoogleSignIn();
+      final firebaseAuth = FirebaseAuth.instance;
+
+      var isSignedIn = await googleSignIn.isSignedIn();
+      if (isSignedIn) {
+        googleSignIn.signOut();
+      } else {
+        firebaseAuth.signOut();
+      }
+      Modular.to.navigate(AppRoutes.splash);
+      // ignore: empty_catches
+    } catch (e) {}
   }
 
   @override

@@ -5,6 +5,7 @@ import 'package:movecare/app/modules/register/domain/entities/create_user_reques
 import 'package:movecare/main.dart';
 
 import '../../../../core/app_routes.dart';
+import '../../../../core/domain/erros/errors_comons.dart';
 import '../../../../core/domain/value_objects/quantity_minimum.dart';
 import '../../../../core/ui/theme/app_typography.dart';
 import '../../../../core/ui/widgets/app_loading.dart';
@@ -84,7 +85,7 @@ class RegisterController {
             TextSpan(
               text: ' clique aqui ',
               style: TextStyle(color: Theme.of(AppGlobalKeys.globalKey.currentState!.context).colorScheme.primary),
-              recognizer: TapGestureRecognizer()..onTap = () {},
+              recognizer: TapGestureRecognizer()..onTap = () => Modular.to.pushNamed(AppRoutes.recoveryPassword),
             ),
             const TextSpan(text: 'para recuperar o acesso.'),
           ],
@@ -111,6 +112,7 @@ class RegisterController {
     final result = await loginWithGoogleUsecase();
     hideAppLoading();
     result.fold((l) {
+      if (l is LoginCanceled) return;
       _errorDefault(l.errorMessage);
     }, (r) {
       Modular.to.pushReplacementNamed(AppRoutes.start);

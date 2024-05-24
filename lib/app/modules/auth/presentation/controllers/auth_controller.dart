@@ -4,6 +4,7 @@ import 'package:flutter_modular/flutter_modular.dart';
 import 'package:movecare/main.dart';
 
 import '../../../../core/app_routes.dart';
+import '../../../../core/domain/erros/errors_comons.dart';
 import '../../../../core/ui/theme/app_typography.dart';
 import '../../../../core/ui/widgets/app_loading.dart';
 import '../../../../core/ui/widgets/default_bottom_sheet.dart';
@@ -112,10 +113,14 @@ class AuthController {
 
   Future<void> loginWithGoogle() async {
     if (acceptContract.value == false) return;
+    Modular.to.pop();
     acceptContract.value = false;
     showAppLoading();
     final result = await loginWithGoogleUsecase();
     hideAppLoading();
-    result.fold((l) => _errorDefault(l.errorMessage), (r) => Modular.to.pushReplacementNamed(AppRoutes.start));
+    result.fold((l) {
+      if (l is LoginCanceled) return;
+      _errorDefault(l.errorMessage);
+    }, (r) => Modular.to.pushReplacementNamed(AppRoutes.start));
   }
 }
