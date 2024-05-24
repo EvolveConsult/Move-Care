@@ -6,8 +6,10 @@ import 'package:intersperse/intersperse.dart';
 import 'package:movecare/app/core/functions/open_url.dart';
 import 'package:movecare/app/core/ui/theme/app_typography.dart';
 import 'package:movecare/app/core/ui/widgets/app_scaffold_widget.dart';
+import 'package:open_store/open_store.dart';
 
 import '../../../../../../core/app_routes.dart';
+import '../../../../../../core/services/app_remote_config.dart';
 import '../../../../../../core/ui/theme/app_icons.dart';
 import '../../../../../../core/ui/widgets/app_bar_widget.dart';
 
@@ -54,7 +56,15 @@ class _ProfilePageState extends State<ProfilePage> {
     setState(() {});
   }
 
-  Future<void> _rateApp() async {}
+  Future<void> _rateApp() async {
+    final appStoreId = AppRemoteConfig().getString(RemoteConfigEnum.appStoreId);
+    final androidAppBundleId = AppRemoteConfig().getString(RemoteConfigEnum.androidAppBundleId);
+
+    OpenStore.instance.open(
+      appStoreId: appStoreId,
+      androidAppBundleId: androidAppBundleId,
+    );
+  }
 
   @override
   void didChangeDependencies() {

@@ -26,6 +26,12 @@ class _StartPageState extends State<StartPage> {
   }
 
   @override
+  void didChangeDependencies() {
+    FocusManager.instance.primaryFocus?.unfocus();
+    super.didChangeDependencies();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return AppScaffoldWidget(
       leadingActionType: LeadingActionType.none,

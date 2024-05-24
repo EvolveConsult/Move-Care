@@ -6,6 +6,7 @@ import 'data/datasources/shared_datasource.dart';
 import 'data/datasources/remote/shared_datasource_firebase_imp.dart';
 import 'data/repositories/shared_repository_imp.dart';
 import 'domain/repositories/shared_repository.dart';
+import 'domain/usecases/send_email_usecase.dart';
 
 class SharedModule extends Module {
   @override
@@ -16,6 +17,7 @@ class SharedModule extends Module {
     /* REPOSITORY */
     i.addSingleton<SharedRepository>(SharedRepositoryImp.new);
     /* USECASE */
+    i.addSingleton<SendEmailUsecase>(SendEmailUsecaseImp.new);
     i.addSingleton<LoginWithGoogleUsecase>(LoginWithGoogleUsecaseImp.new);
     /* CONTROLLER */
   }

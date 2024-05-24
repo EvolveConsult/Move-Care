@@ -14,6 +14,7 @@ class ContactUsPageState extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AppScaffoldWidget(
+      bottomSheetAlert: controller.bottomSheetAlert,
       resizeToAvoidBottomInset: true,
       title: 'Fale conosco',
       page: SingleChildScrollView(
@@ -35,7 +36,7 @@ class ContactUsPageState extends StatelessWidget {
               controller: controller.textController,
               isTextArea: true,
               showCounter: true,
-              maxCharacters: 200,
+              maxCharacters: 500,
             ),
             const SizedBox(height: 16),
             AppRichText(
@@ -56,7 +57,8 @@ class ContactUsPageState extends StatelessWidget {
             valueListenable: controller.textController,
             builder: (_, value, __) {
               return AppButton(
-                  text: 'Enviar', onTap: value.text.length >= controller.minimunSizeRequired ? () {} : null);
+                  text: 'Enviar',
+                  onTap: value.text.length >= controller.minimunSizeRequired ? controller.sendEmail : null);
             }),
       )),
     );

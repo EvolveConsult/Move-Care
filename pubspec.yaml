@@ -1,7 +1,7 @@
 name: movecare
 description: A new Flutter project.
 
-version: 1.0.0+1
+version: 1.1.0+1
 
 environment:
   sdk: ">=3.2.0 <4.0.0"
@@ -26,6 +26,8 @@ dependencies:
   loader_overlay: ^3.0.4
   google_sign_in: ^6.2.1
   firebase_remote_config: ^4.4.6
+  mailto: ^2.0.0
+  open_store: ^0.5.0
 
 dev_dependencies:
   flutter_test:
@@ -33,22 +35,6 @@ dev_dependencies:
   flutter_lints: ^3.0.1
   flutter_launcher_icons: ^0.13.1
   flutter_native_splash: ^2.3.5
-
-# flutter_native_splash:
-#   color: "#2C8CE4"
-#   image: "assets/launcher_icon/icon.png"
-#   android: true
-#   ios: true
-#   android_12:
-#     image: "assets/launcher_icon/icon_splash_android12.png"
-
-# flutter_launcher_icons:
-#   image_path: "assets/launcher_icon/icon.png"
-#   adaptive_icon_foreground: "assets/launcher_icon/icon.png"
-#   adaptive_icon_background: "assets/launcher_icon/bg_icon.png"
-#   android: true
-#   ios: true
-#   remove_alpha_ios: true
 
 flutter_native_splash:
   android: true
@@ -60,7 +46,6 @@ flutter_native_splash:
     image: "assets/launcher_icon/splash.png"
 
 flutter_launcher_icons:
-  # image_path: "assets/launcher_icon/icon-android.png"
   image_path_android: "assets/launcher_icon/icon-android.png"
   image_path_ios: "assets/launcher_icon/icon.png"
   android: true
