@@ -1,7 +1,7 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:movecare/main.dart';
+import 'package:moveecare/main.dart';
 
 import '../../../../core/app_routes.dart';
 import '../../../../core/domain/erros/errors_comons.dart';
@@ -30,7 +30,10 @@ class AuthController {
 
   ValueNotifier<bool> acceptContract = ValueNotifier(false);
 
+  final formKey = GlobalKey<FormState>();
+
   Future<void> onConfirm() async {
+    if (formKey.currentState?.validate() == false) return;
     showAppLoading();
     final result = await loginWithEmailAndPasswordUsecase(email: email.text, password: password.text);
     hideAppLoading();

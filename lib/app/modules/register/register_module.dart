@@ -1,5 +1,5 @@
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:movecare/app/modules/shared/shared_module.dart';
+import 'package:moveecare/app/modules/shared/shared_module.dart';
 
 import '../../core/app_routes.dart';
 import 'data/datasources/register_datasource.dart';

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:intersperse/intersperse.dart';
-import 'package:movecare/app/core/ui/widgets/app_bar_widget.dart';
-import 'package:movecare/app/core/ui/widgets/app_scaffold_widget.dart';
+import 'package:moveecare/app/core/ui/widgets/app_bar_widget.dart';
+import 'package:moveecare/app/core/ui/widgets/app_scaffold_widget.dart';
 
 import '../../../../../../core/app_routes.dart';
 import '../../../../../../core/ui/theme/app_typography.dart';

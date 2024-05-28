@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:movecare/app/core/ui/theme/app_typography.dart';
-import 'package:movecare/app/core/ui/theme/app_icons.dart';
+import 'package:moveecare/app/core/ui/theme/app_typography.dart';
+import 'package:moveecare/app/core/ui/theme/app_icons.dart';
 
 class ContinueWithGoogleWidget extends StatelessWidget {
   const ContinueWithGoogleWidget({super.key, required this.onTap});

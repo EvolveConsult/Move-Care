@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:movecare/app/core/ui/theme/app_typography.dart';
+import 'package:moveecare/app/core/ui/theme/app_typography.dart';
 import 'app_bottom_sheet.dart';
 import 'app_button_widget.dart';
 

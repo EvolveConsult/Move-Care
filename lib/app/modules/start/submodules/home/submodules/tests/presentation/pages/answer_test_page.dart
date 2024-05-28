@@ -2,11 +2,11 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:movecare/app/core/app_routes.dart';
-import 'package:movecare/app/core/ui/theme/app_typography.dart';
-import 'package:movecare/app/core/ui/widgets/app_button_widget.dart';
-import 'package:movecare/app/core/ui/widgets/app_radio_button.dart';
-import 'package:movecare/app/modules/start/submodules/home/submodules/tests/presentation/pages/views_objects/result_test_vo.dart';
+import 'package:moveecare/app/core/app_routes.dart';
+import 'package:moveecare/app/core/ui/theme/app_typography.dart';
+import 'package:moveecare/app/core/ui/widgets/app_button_widget.dart';
+import 'package:moveecare/app/core/ui/widgets/app_radio_button.dart';
+import 'package:moveecare/app/modules/start/submodules/home/submodules/tests/presentation/pages/views_objects/result_test_vo.dart';
 
 import '../../../../../../../../core/ui/widgets/app_scaffold_widget.dart';
 import '../../domain/test_entity.dart';

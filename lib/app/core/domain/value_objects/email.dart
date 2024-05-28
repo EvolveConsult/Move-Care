@@ -1,4 +1,4 @@
-import 'package:movecare/app/core/domain/extension/ext_string.dart';
+import 'package:moveecare/app/core/domain/extension/ext_string.dart';
 
 import 'value_object_interface.dart';
 

@@ -3,9 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:intersperse/intersperse.dart';
-import 'package:movecare/app/core/functions/open_url.dart';
-import 'package:movecare/app/core/ui/theme/app_typography.dart';
-import 'package:movecare/app/core/ui/widgets/app_scaffold_widget.dart';
+import 'package:moveecare/app/core/functions/open_url.dart';
+import 'package:moveecare/app/core/ui/theme/app_typography.dart';
+import 'package:moveecare/app/core/ui/widgets/app_scaffold_widget.dart';
 import 'package:open_store/open_store.dart';
 
 import '../../../../../../core/app_routes.dart';

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:movecare/app/core/ui/theme/app_typography.dart';
+import 'package:moveecare/app/core/ui/theme/app_typography.dart';
 
 import '../../domain/value_objects/value_object_interface.dart';
 

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:movecare/app/core/ui/theme/app_typography.dart';
+import 'package:moveecare/app/core/ui/theme/app_typography.dart';
 import '../../../../../../../../core/ui/widgets/app_scaffold_widget.dart';
 import 'views_objects/result_test_vo.dart';
 

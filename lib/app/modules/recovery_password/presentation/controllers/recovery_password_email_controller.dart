@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:movecare/app/core/app_routes.dart';
-import 'package:movecare/app/core/ui/widgets/app_loading.dart';
+import 'package:moveecare/app/core/app_routes.dart';
+import 'package:moveecare/app/core/ui/widgets/app_loading.dart';
 
 import '../../domain/usecases/recovery_with_email_usecase.dart';
 

@@ -1,10 +1,10 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:movecare/app/core/app_routes.dart';
-import 'package:movecare/app/core/ui/theme/app_icons.dart';
-import 'package:movecare/app/core/ui/theme/app_typography.dart';
-import 'package:movecare/app/core/ui/widgets/app_scaffold_widget.dart';
+import 'package:moveecare/app/core/app_routes.dart';
+import 'package:moveecare/app/core/ui/theme/app_icons.dart';
+import 'package:moveecare/app/core/ui/theme/app_typography.dart';
+import 'package:moveecare/app/core/ui/widgets/app_scaffold_widget.dart';
 
 import '../../domain/entities/guidance_for_users_entity.dart';
 import '../controllers/guidance_for_users_controller.dart';

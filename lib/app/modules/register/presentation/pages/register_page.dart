@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:intersperse/intersperse.dart';
-import 'package:movecare/app/core/domain/value_objects/equality.dart';
-import 'package:movecare/app/core/domain/value_objects/required.dart';
-import 'package:movecare/app/core/ui/theme/app_typography.dart';
-import 'package:movecare/app/core/ui/widgets/app_button_widget.dart';
-import 'package:movecare/app/core/ui/widgets/app_scaffold_widget.dart';
-import 'package:movecare/app/core/ui/widgets/app_text_form_field_widget.dart';
-import 'package:movecare/app/core/ui/widgets/continue_with_google_widget.dart';
+import 'package:moveecare/app/core/domain/value_objects/equality.dart';
+import 'package:moveecare/app/core/domain/value_objects/required.dart';
+import 'package:moveecare/app/core/ui/theme/app_typography.dart';
+import 'package:moveecare/app/core/ui/widgets/app_button_widget.dart';
+import 'package:moveecare/app/core/ui/widgets/app_scaffold_widget.dart';
+import 'package:moveecare/app/core/ui/widgets/app_text_form_field_widget.dart';
+import 'package:moveecare/app/core/ui/widgets/continue_with_google_widget.dart';
 
 import '../../../../core/domain/value_objects/email.dart';
 import '../../../shared/presentation/widgets/accept_terms_widget.dart';

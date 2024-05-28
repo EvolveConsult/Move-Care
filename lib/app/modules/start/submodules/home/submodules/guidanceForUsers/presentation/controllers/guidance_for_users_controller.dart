@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:movecare/app/core/ui/widgets/app_loading.dart';
+import 'package:moveecare/app/core/ui/widgets/app_loading.dart';
 
 import '../../domain/entities/guidance_for_users_entity.dart';
 import '../../domain/usecases/fetch_all_guidance_for_user_usecase.dart';

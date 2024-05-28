@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_html/flutter_html.dart';
-import 'package:movecare/app/core/ui/widgets/app_scaffold_widget.dart';
+import 'package:moveecare/app/core/ui/widgets/app_scaffold_widget.dart';
 
 import '../../domain/entities/guidance_for_users_entity.dart';
 

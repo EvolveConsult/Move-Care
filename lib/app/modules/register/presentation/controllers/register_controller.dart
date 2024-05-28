@@ -1,8 +1,8 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:movecare/app/modules/register/domain/entities/create_user_request_entity.dart';
-import 'package:movecare/main.dart';
+import 'package:moveecare/app/modules/register/domain/entities/create_user_request_entity.dart';
+import 'package:moveecare/main.dart';
 
 import '../../../../core/app_routes.dart';
 import '../../../../core/domain/erros/errors_comons.dart';
@@ -71,10 +71,6 @@ class RegisterController {
     return enableButton.value;
   }
 
-  void onTapContract() {
-    //TODO levar para tela de contrato
-  }
-
   void _errorEmailAlreadyInUseFailure() {
     bottomSheetAlert.value = DefaultBottomSheet(
         title: 'E-mail já cadastrado',
@@ -85,7 +81,7 @@ class RegisterController {
             TextSpan(
               text: ' clique aqui ',
               style: TextStyle(color: Theme.of(AppGlobalKeys.globalKey.currentState!.context).colorScheme.primary),
-              recognizer: TapGestureRecognizer()..onTap = () => Modular.to.pushNamed(AppRoutes.recoveryPassword),
+              recognizer: TapGestureRecognizer()..onTap = () => Modular.to.pushNamed(AppRoutes.recoveryPasswordEmail),
             ),
             const TextSpan(text: 'para recuperar o acesso.'),
           ],

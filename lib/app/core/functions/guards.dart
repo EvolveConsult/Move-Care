@@ -1,5 +1,5 @@
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:movecare/app/core/app_routes.dart';
+import 'package:moveecare/app/core/app_routes.dart';
 
 import '../../modules/auth/presentation/controllers/auth_controller.dart';
 

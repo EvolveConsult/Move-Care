@@ -6,11 +6,11 @@ class AppRoutes {
   static const auth = '/auth';
 
   //RECOVERY
-  static const recoveryPassword = '/recoveryPassword';
-  static const recoveryPasswordEmail = '$recoveryPassword/recoveryPassword';
+  static const _recoveryPassword = '/recoveryPassword';
+  static const recoveryPasswordEmail = '$_recoveryPassword/recoveryPassword';
   // static const recoveryPasswordToken = '$recoveryPassword/token';
   // static const recoveryPasswordPassword = '$recoveryPassword/password';
-  static const recoveryPasswordSuccess = '$recoveryPassword/success';
+  static const recoveryPasswordSuccess = '$_recoveryPassword/success';
 
   //REGISTER
   static const register = '/register';

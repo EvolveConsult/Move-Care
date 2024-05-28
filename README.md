@@ -1,4 +1,4 @@
-# movecare
+# moveecare
 
 A new Flutter project.
 

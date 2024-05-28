@@ -7,12 +7,25 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:174751530690:android:b3bf0ede7aaaad80e0055b",
+        "mobilesdk_app_id": "1:174751530690:android:68ab12c65ec1aed8e0055b",
         "android_client_info": {
-          "package_name": "br.com.movecare.movecare"
+          "package_name": "br.com.moveecare.moveecare"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "174751530690-9iugc9rg57j8umilp5qtqssfh1amls6n.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "br.com.moveecare.moveecare",
+            "certificate_hash": "b6cb51961ae5f43012eabebec096324de98968b3"
+          }
+        },
+        {
+          "client_id": "174751530690-m0eiunt2pifrq8ofc2v29l2tn6hjuc4f.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyBoKlHZjHOnrsWZrRagiwT_YEzx2IYIHl0"
@@ -20,7 +33,19 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "174751530690-5lm5r8f4ce52qcs9a472erbcgqj4bve9.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "174751530690-72q5evaq6lpca53sjtqonsrq7cn6u105.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "br.com.movecare.movecare"
+              }
+            }
+          ]
         }
       }
     }

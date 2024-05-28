@@ -1,5 +1,5 @@
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:movecare/app/modules/shared/shared_module.dart';
+import 'package:moveecare/app/modules/shared/shared_module.dart';
 import 'data/datasources/auth_datasource.dart';
 import 'data/datasources/remote/auth_datasource_firebase_imp.dart';
 import 'data/repositories/auth_repository_imp.dart';

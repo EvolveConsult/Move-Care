@@ -1,6 +1,6 @@
 import 'package:dartz/dartz.dart';
 import 'package:mailto/mailto.dart';
-import 'package:movecare/app/core/functions/open_url.dart';
+import 'package:moveecare/app/core/functions/open_url.dart';
 
 import '../../../../core/domain/erros/failure.dart';
 import '../entities/send_email_entity.dart';

@@ -1,7 +1,7 @@
 // import 'package:flutter/material.dart';
 // import 'package:flutter_modular/flutter_modular.dart';
-// import 'package:movecare/app/core/ui/theme/app_typography.dart';
-// import 'package:movecare/app/core/ui/widgets/app_countdown_widget.dart';
+// import 'package:moveecare/app/core/ui/theme/app_typography.dart';
+// import 'package:moveecare/app/core/ui/widgets/app_countdown_widget.dart';
 
 // import '../../../../core/app_routes.dart';
 // import '../../../../core/ui/widgets/app_scaffold_widget.dart';

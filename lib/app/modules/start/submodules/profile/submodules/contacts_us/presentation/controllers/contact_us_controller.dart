@@ -1,7 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:movecare/app/core/ui/theme/app_typography.dart';
-import 'package:movecare/app/modules/shared/domain/entities/send_email_entity.dart';
+import 'package:moveecare/app/core/ui/theme/app_typography.dart';
+import 'package:moveecare/app/modules/shared/domain/entities/send_email_entity.dart';
 
 import '../../../../../../../../core/services/app_remote_config.dart';
 import '../../../../../../../../core/ui/widgets/default_bottom_sheet.dart';

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:movecare/app/core/ui/theme/app_typography.dart';
-import 'package:movecare/app/core/ui/widgets/app_scaffold_widget.dart';
+import 'package:moveecare/app/core/ui/theme/app_typography.dart';
+import 'package:moveecare/app/core/ui/widgets/app_scaffold_widget.dart';
 
 class WellcomePage extends StatelessWidget {
   const WellcomePage({super.key});

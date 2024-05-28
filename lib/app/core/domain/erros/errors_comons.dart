@@ -1,4 +1,4 @@
-import 'package:movecare/app/core/domain/erros/failure.dart';
+import 'package:moveecare/app/core/domain/erros/failure.dart';
 
 class UserNotFound extends Failure {}
 

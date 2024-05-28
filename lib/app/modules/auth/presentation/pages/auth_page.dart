@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:movecare/app/core/app_routes.dart';
-import 'package:movecare/app/core/ui/theme/app_typography.dart';
-import 'package:movecare/app/core/ui/widgets/app_button_widget.dart';
-import 'package:movecare/app/core/ui/widgets/app_scaffold_widget.dart';
-import 'package:movecare/app/core/ui/widgets/app_text_form_field_widget.dart';
-import 'package:movecare/app/core/ui/widgets/continue_with_google_widget.dart';
-import 'package:movecare/app/core/ui/widgets/default_bottom_sheet.dart';
+import 'package:moveecare/app/core/app_routes.dart';
+import 'package:moveecare/app/core/domain/value_objects/required.dart';
+import 'package:moveecare/app/core/ui/theme/app_typography.dart';
+import 'package:moveecare/app/core/ui/widgets/app_button_widget.dart';
+import 'package:moveecare/app/core/ui/widgets/app_scaffold_widget.dart';
+import 'package:moveecare/app/core/ui/widgets/app_text_form_field_widget.dart';
+import 'package:moveecare/app/core/ui/widgets/continue_with_google_widget.dart';
+import 'package:moveecare/app/core/ui/widgets/default_bottom_sheet.dart';
 
 import '../../../../core/domain/value_objects/email.dart';
 import '../../../../core/ui/theme/app_icons.dart';
@@ -49,53 +50,57 @@ class _AuthPageState extends State<AuthPage> {
           physics: const ClampingScrollPhysics(),
           slivers: [
             SliverToBoxAdapter(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  const SizedBox(height: 20),
-                  Container(
-                    padding: const EdgeInsets.all(8),
-                    height: 160,
-                    width: 160,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(140),
-                      color: Theme.of(context).colorScheme.primary,
+              child: Form(
+                key: widget.controller.formKey,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    const SizedBox(height: 20),
+                    Container(
+                      padding: const EdgeInsets.all(8),
+                      height: 160,
+                      width: 160,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(140),
+                        color: Theme.of(context).colorScheme.primary,
+                      ),
+                      child: AppIcons.logo.icon(),
                     ),
-                    child: AppIcons.logo.icon(),
-                  ),
-                  const SizedBox(height: 80),
-                  AppTextFormField(
-                    labelText: 'E-mail',
-                    hintText: 'Digite seu e-mail',
-                    validator: [Email()],
-                    autovalidateMode: AutovalidateMode.onUserInteraction,
-                    keyboardType: TextInputType.emailAddress,
-                    controller: widget.controller.email,
-                  ),
-                  const SizedBox(height: 20),
-                  AppTextFormFieldPasswordWidget(
-                    controller: widget.controller.password,
-                    labelText: 'Senha',
-                    hintText: 'Digite a senha',
-                  ),
-                  const SizedBox(height: 8),
-                  Align(
-                    alignment: Alignment.centerRight,
-                    child: GestureDetector(
-                      onTap: () => Modular.to.pushNamed(AppRoutes.recoveryPasswordEmail),
-                      child: AppText(
-                        'Esqueci minha senha',
-                        size: AppTextSize.verySmall,
-                        textStyle: TextStyle(color: Theme.of(context).colorScheme.primary),
+                    const SizedBox(height: 80),
+                    AppTextFormField(
+                      labelText: 'E-mail',
+                      hintText: 'Digite seu e-mail',
+                      validator: [Email()],
+                      autovalidateMode: AutovalidateMode.onUserInteraction,
+                      keyboardType: TextInputType.emailAddress,
+                      controller: widget.controller.email,
+                    ),
+                    const SizedBox(height: 20),
+                    AppTextFormFieldPasswordWidget(
+                      controller: widget.controller.password,
+                      labelText: 'Senha',
+                      hintText: 'Digite a senha',
+                      validator: [Required("Senha é requerida")],
+                    ),
+                    const SizedBox(height: 8),
+                    Align(
+                      alignment: Alignment.centerRight,
+                      child: GestureDetector(
+                        onTap: () => Modular.to.pushNamed(AppRoutes.recoveryPasswordEmail),
+                        child: AppText(
+                          'Esqueci minha senha',
+                          size: AppTextSize.verySmall,
+                          textStyle: TextStyle(color: Theme.of(context).colorScheme.primary),
+                        ),
                       ),
                     ),
-                  ),
-                  const SizedBox(height: 20),
-                  const AppDivider(text: 'ou'),
-                  const SizedBox(height: 16),
-                  ContinueWithGoogleWidget(onTap: _confirmLoginWithGoogle),
-                  const SizedBox(height: 20),
-                ],
+                    const SizedBox(height: 20),
+                    const AppDivider(text: 'ou'),
+                    const SizedBox(height: 16),
+                    ContinueWithGoogleWidget(onTap: _confirmLoginWithGoogle),
+                    const SizedBox(height: 20),
+                  ],
+                ),
               ),
             ),
             SliverFillRemaining(
