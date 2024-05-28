@@ -14,15 +14,15 @@
       },
       "oauth_client": [
         {
-          "client_id": "174751530690-9iugc9rg57j8umilp5qtqssfh1amls6n.apps.googleusercontent.com",
+          "client_id": "174751530690-41fs5qo70g9vp4sr53bugv7sqjevbslu.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "br.com.moveecare.moveecare",
-            "certificate_hash": "b6cb51961ae5f43012eabebec096324de98968b3"
+            "certificate_hash": "f75e640ee69147b2f9f315a2a9fb255cd89f6a52"
           }
         },
         {
-          "client_id": "174751530690-m0eiunt2pifrq8ofc2v29l2tn6hjuc4f.apps.googleusercontent.com",
+          "client_id": "174751530690-92mcutih49bi6j3qakcmvf4ndgtdia28.apps.googleusercontent.com",
           "client_type": 3
         }
       ],

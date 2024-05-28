@@ -72,14 +72,14 @@ class _ProfilePageState extends State<ProfilePage> {
     isIOS = Theme.of(context).platform == TargetPlatform.iOS;
     final Color colorButtons = Theme.of(context).colorScheme.onSecondary.withOpacity(.75);
     profileOptions = [
-      _ProfileOption(
-          onTap: () => Modular.to.pushNamed(AppRoutes.contactUs),
-          icon: AppIcon(icon: AppIcons.mail, color: colorButtons),
-          label: 'Fale conosco'),
-      _ProfileOption(
-          onTap: _rateApp,
-          icon: AppIcon(icon: AppIcons.star, color: colorButtons),
-          label: isIOS ? 'Avaliar na Apple Store' : 'Avaliar na Google Play'),
+      // _ProfileOption(
+      //     onTap: () => Modular.to.pushNamed(AppRoutes.contactUs),
+      //     icon: AppIcon(icon: AppIcons.mail, color: colorButtons),
+      //     label: 'Fale conosco'),
+      // _ProfileOption(
+      //     onTap: _rateApp,
+      //     icon: AppIcon(icon: AppIcons.star, color: colorButtons),
+      //     label: isIOS ? 'Avaliar na Apple Store' : 'Avaliar na Google Play'),
       _ProfileOption(
           onTap: onTapTerms,
           icon: AppIcon(icon: AppIcons.terms, color: colorButtons),
@@ -151,7 +151,7 @@ class _ProfilePageState extends State<ProfilePage> {
                   Container(
                       padding: const EdgeInsets.only(top: 32),
                       alignment: Alignment.center,
-                      child: const AppText('Versão: 0.0.1', size: AppTextSize.verySmall))
+                      child: const AppText('Versão: 1.1.0', size: AppTextSize.verySmall))
                 ],
               ),
             )
