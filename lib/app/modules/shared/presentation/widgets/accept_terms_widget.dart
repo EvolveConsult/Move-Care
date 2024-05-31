@@ -25,7 +25,7 @@ class _AcceptTermsWidgetState extends State<AcceptTermsWidget> {
           style: TextStyle(color: Theme.of(context).colorScheme.primary),
           recognizer: TapGestureRecognizer()..onTap = onTapTerms,
         ),
-        const TextSpan(text: 'do Move & Care.'),
+        const TextSpan(text: 'do Move&Care.'),
       ],
     );
   }

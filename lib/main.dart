@@ -38,7 +38,7 @@ class AppWidget extends StatelessWidget {
       useDefaultLoading: false,
       overlayWidgetBuilder: (progress) => const Center(child: CircularProgressIndicator.adaptive()),
       child: MaterialApp.router(
-        title: 'Move & Care',
+        title: 'Move&Care',
         theme: ThemeData(useMaterial3: true, colorScheme: lightColorScheme),
         darkTheme: ThemeData(useMaterial3: true, colorScheme: lightColorScheme),
         routerConfig: Modular.routerConfig,

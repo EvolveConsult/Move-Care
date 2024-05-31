@@ -53,7 +53,7 @@ class SplashPage extends StatelessWidget {
                   textStyle: TextStyle(fontWeight: FontWeight.w500),
                 ),
                 AppText(
-                  'Este é o move & care, um guia institucional ilustrado e digital que te ajudará no acompanhamento de crianças com transtornos do neurodesenvolvimento',
+                  'Este é o Move&Care, um guia institucional ilustrado e digital que te ajudará no acompanhamento de crianças com transtornos do neurodesenvolvimento',
                   textAlign: TextAlign.center,
                   size: AppTextSize.small,
                   textStyle: TextStyle(
