@@ -52,7 +52,7 @@ class _ProfilePageState extends State<ProfilePage> {
 
   void _fetchUserData() async {
     final user = FirebaseAuth.instance.currentUser;
-    nameUser = user?.displayName ?? "";
+    nameUser = user?.displayName ?? "Move&Care";
     setState(() {});
   }
 
