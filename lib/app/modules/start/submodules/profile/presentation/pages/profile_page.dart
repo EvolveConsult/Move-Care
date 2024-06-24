@@ -12,6 +12,8 @@ import '../../../../../../core/app_routes.dart';
 import '../../../../../../core/services/app_remote_config.dart';
 import '../../../../../../core/ui/theme/app_icons.dart';
 import '../../../../../../core/ui/widgets/app_bar_widget.dart';
+import '../../../../../../core/ui/widgets/default_bottom_sheet.dart';
+import '../controllers/profile_controller.dart';
 
 class ProfilePage extends StatefulWidget {
   const ProfilePage({super.key});
@@ -21,6 +23,7 @@ class ProfilePage extends StatefulWidget {
 }
 
 class _ProfilePageState extends State<ProfilePage> {
+  final controller = Modular.get<ProfileController>();
   List<_ProfileOption> profileOptions = [];
 
   String nameUser = "";
@@ -66,6 +69,20 @@ class _ProfilePageState extends State<ProfilePage> {
     );
   }
 
+  Future<void> _confirmDeleteAccount() async {
+    controller.bottomSheetAlert.value = DefaultBottomSheet(
+      title: 'Excluir conta',
+      content: const AppText('Deseja realmente excluir sua conta? Essa ação não pode ser desfeita.'),
+      confirmText: 'Confirmar',
+      onConfirm: () {
+        Modular.to.pop();
+        controller.onConfirmDeleteAccount();
+      },
+      cancelText: 'Cancelar',
+      onCancel: Modular.to.pop,
+    );
+  }
+
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
@@ -84,6 +101,10 @@ class _ProfilePageState extends State<ProfilePage> {
           onTap: onTapTerms,
           icon: AppIcon(icon: AppIcons.terms, color: colorButtons),
           label: 'Política de privacidade e Termos de uso'),
+      _ProfileOption(
+          onTap: _confirmDeleteAccount,
+          icon: AppIcon(icon: AppIcons.trash, color: colorButtons),
+          label: 'Excluir conta'),
       _ProfileOption(onTap: _logout, icon: AppIcon(icon: AppIcons.exit, color: colorButtons), label: 'Sair'),
     ];
   }
@@ -96,6 +117,7 @@ class _ProfilePageState extends State<ProfilePage> {
       pagePadding: const EdgeInsets.all(0),
       leadingActionType: LeadingActionType.none,
       showAppTopPageWidget: true,
+      bottomSheetAlert: controller.bottomSheetAlert,
       canPop: false,
       page: ScrollConfiguration(
         behavior: const ScrollBehavior().copyWith(overscroll: false),

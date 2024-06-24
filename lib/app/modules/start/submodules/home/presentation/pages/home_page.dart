@@ -34,11 +34,11 @@ class _HomePageState extends State<HomePage> {
       //           textStyle: TextStyle(color: Theme.of(context).colorScheme.background), size: AppTextSize.verySmall)),
       //   label: 'Boas-vindas',
       // ),
-      // _HomeOption(
-      //   onTap: () => Modular.to.pushNamed(AppRoutes.guidanceForUsers),
-      //   icon: Icon(size: 20, Icons.arrow_forward_ios_rounded, color: colorButtons),
-      //   label: 'Orientações ao usuário',
-      // ),
+      _HomeOption(
+        onTap: () => Modular.to.pushNamed(AppRoutes.guidanceForUsers),
+        icon: Icon(size: 20, Icons.arrow_forward_ios_rounded, color: colorButtons),
+        label: 'Orientações ao usuário',
+      ),
       // _HomeOption(
       //     onTap: () => Modular.to.pushNamed(AppRoutes.tests),
       //     icon: AppIcon(icon: AppIcons.tests, color: colorButtons),

@@ -15,6 +15,7 @@ class AppIcons {
   static const star = '$_path/star.svg';
   static const arrowRight = '$_path/arrowRight.svg';
   static const recoveryPassword = '$_path/recoveryPassword.svg';
+  static const trash = '$_path/trash.svg';
 }
 
 extension AppIconsExt on String {

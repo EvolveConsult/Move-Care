@@ -53,7 +53,6 @@ class _StateGuidanceForUsersPageSuccess extends StatelessWidget {
     return ListView.separated(
         padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
         itemBuilder: (context, index) {
-          print(index);
           final guidanceForUser = listGuidanceForUser[index];
           return GestureDetector(
             onTap: () {
@@ -80,13 +79,14 @@ class _StateGuidanceForUsersPageSuccess extends StatelessWidget {
                     child: ClipRRect(
                       borderRadius: BorderRadius.circular(12),
                       child: SizedBox(
-                        width: 100,
+                        height: double.maxFinite,
+                        width: 112,
                         child: CachedNetworkImage(
                           fit: BoxFit.fill,
                           imageUrl: guidanceForUser.urlImage,
                           progressIndicatorBuilder: (context, url, downloadProgress) =>
                               Center(child: CircularProgressIndicator.adaptive(value: downloadProgress.progress)),
-                          errorWidget: (context, url, error) => const Icon(Icons.error), //TODO mudar para logo do app
+                          errorWidget: (context, url, error) => AppIcons.logo.icon(), //TODO mudar para logo do app
                         ),
                       ),
                     ),
@@ -95,11 +95,14 @@ class _StateGuidanceForUsersPageSuccess extends StatelessWidget {
                   Expanded(
                     child: Align(
                         alignment: Alignment.topLeft,
-                        child: AppText(
-                          guidanceForUser.title,
-                          size: AppTextSize.small,
-                          textOverflow: TextOverflow.ellipsis,
-                          maxLine: 3,
+                        child: Tooltip(
+                          message: guidanceForUser.title,
+                          child: AppText(
+                            guidanceForUser.title,
+                            size: AppTextSize.small,
+                            textOverflow: TextOverflow.ellipsis,
+                            maxLine: 3,
+                          ),
                         )),
                   ),
                   const SizedBox(width: 8),

@@ -97,7 +97,9 @@ class AuthController {
       title: 'E-mail não verificado',
       content: const AppRichText(
         children: [
-          TextSpan(text: 'Você precisa confirmar seu e-mail através do link enviado.\nVerifique a caixa de spam.'),
+          TextSpan(
+              text:
+                  'Você precisa confirmar seu e-mail através do link enviado.\nVerifique a caixa de entrada e a caixa de spam.'),
         ],
       ),
       confirmText: 'Entendi',
