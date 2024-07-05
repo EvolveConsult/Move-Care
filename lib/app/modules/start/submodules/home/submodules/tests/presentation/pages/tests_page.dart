@@ -1,4 +1,3 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:moveecare/app/core/app_routes.dart';
@@ -21,49 +20,16 @@ class _TestsPageState extends State<TestsPage> {
   void didChangeDependencies() {
     super.didChangeDependencies();
     tests = [
-      TestsEntity(
-          title:
-              'Teste 1 - Avaliação de habilidades intelectuais com texto maio para exemplicar uma quebra de linhaaaaaa maio para exemplicar uma quebra de linhaaaaaa',
-          questions: [
-            QuestionEntity(title: '1 Pergunta:', options: [
-              QuestionOptionsEntity(label: '1 Pergunta - 1 opção'),
-              QuestionOptionsEntity(label: '1 Pergunta - 2 opção'),
-              QuestionOptionsEntity(label: '1 Pergunta - 3 opção'),
-              QuestionOptionsEntity(label: '1 Pergunta - 4 opção'),
-            ]),
-            QuestionEntity(title: '2 Pergunta:', options: [
-              QuestionOptionsEntity(label: '2 Pergunta - 1 opção'),
-              QuestionOptionsEntity(label: '2 Pergunta - 2 opção'),
-              QuestionOptionsEntity(label: '2 Pergunta - 3 opção'),
-              QuestionOptionsEntity(label: '2 Pergunta - 4 opção'),
-            ]),
-            QuestionEntity(title: '3 Pergunta:', options: [
-              QuestionOptionsEntity(label: '3 Pergunta - 1 opção'),
-              QuestionOptionsEntity(label: '3 Pergunta - 2 opção'),
-              QuestionOptionsEntity(label: '3 Pergunta - 3 opçãoLoremLoremLorem'),
-              QuestionOptionsEntity(label: '3 Pergunta - 4 opção'),
-            ]),
-            QuestionEntity(title: '4 Pergunta:', options: [
-              QuestionOptionsEntity(label: '4 Pergunta - 1 opção Lorem Ipsum damp'),
-              QuestionOptionsEntity(label: '4 Pergunta - 2 opção'),
-              QuestionOptionsEntity(label: '4 Pergunta - 3 opção'),
-              QuestionOptionsEntity(label: '4 Pergunta - 4 opção'),
-            ]),
-            QuestionEntity(title: '5 Pergunta:', options: [
-              QuestionOptionsEntity(label: '5 Pergunta - 1 opção'),
-              QuestionOptionsEntity(label: '5 Pergunta - 2 opção'),
-              QuestionOptionsEntity(label: '5 Pergunta - 3 opção'),
-              QuestionOptionsEntity(label: '5 Pergunta - 4 opção'),
-            ]),
-          ]),
-      TestsEntity(title: 'Teste 2 - Avaliação teste', questions: [
-        QuestionEntity(title: '2 Pergunta:', options: [
-          QuestionOptionsEntity(label: '1 opção'),
-          QuestionOptionsEntity(label: '2 opção'),
-          QuestionOptionsEntity(label: '3 opção'),
-          QuestionOptionsEntity(label: '4 opção'),
-        ])
+      TestsEntity(pathImage: 'assets/images/testChild.jpeg', title: 'Rastreamento em crianças', tests: [
+        ButtonTest(label: 'TDAH', onTap: () => Modular.to.pushNamed(AppRoutes.testChildTdah)),
+        ButtonTest(label: 'TEA', onTap: () => Modular.to.pushNamed(AppRoutes.testChildTea)),
+        ButtonTest(label: 'TDC', onTap: () => Modular.to.pushNamed(AppRoutes.testChildTdc)),
       ]),
+      // TestsEntity(pathImage: 'assets/images/testAdult.jpg', title: 'Rastreamento em adultos', tests: [
+      //   ButtonTest(label: 'TDAH', onTap: () => Modular.to.pushNamed(AppRoutes.testChildTdc)),
+      //   ButtonTest(label: 'TEA', onTap: () => Modular.to.pushNamed(AppRoutes.testChildTdc)),
+      //   ButtonTest(label: 'TDC', onTap: () => Modular.to.pushNamed(AppRoutes.testChildTdc)),
+      // ]),
     ];
   }
 
@@ -111,13 +77,14 @@ class _ItemsTests extends StatelessWidget {
                   child: SizedBox(
                     width: 100,
                     height: 100,
-                    child: CachedNetworkImage(
-                      fit: BoxFit.fill,
-                      imageUrl: 'https://picsum.photos/200/300',
-                      progressIndicatorBuilder: (context, url, downloadProgress) =>
-                          Center(child: CircularProgressIndicator.adaptive(value: downloadProgress.progress)),
-                      errorWidget: (context, url, error) => const Icon(Icons.error), //TODO mudar para logo do app
-                    ),
+                    child: Image.asset(test.pathImage, fit: BoxFit.fill),
+                    // child: CachedNetworkImage(
+                    //   fit: BoxFit.fill,
+                    //   imageUrl: test.pathImage,
+                    //   progressIndicatorBuilder: (context, url, downloadProgress) =>
+                    //       Center(child: CircularProgressIndicator.adaptive(value: downloadProgress.progress)),
+                    //   errorWidget: (context, url, error) => AppIcons.logo.icon(),
+                    // ),
                   ),
                 ),
                 const SizedBox(width: 12),
@@ -138,11 +105,7 @@ class _ItemsTests extends StatelessWidget {
             padding: const EdgeInsets.only(left: 12),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                _ButtonTest(label: 'TDC', test: test),
-                _ButtonTest(label: 'TEA', test: test),
-                _ButtonTest(label: 'TDAH', test: test),
-              ],
+              children: test.tests,
             ),
           )
         ],
@@ -151,15 +114,15 @@ class _ItemsTests extends StatelessWidget {
   }
 }
 
-class _ButtonTest extends StatelessWidget {
-  const _ButtonTest({required this.label, required this.test});
+class ButtonTest extends StatelessWidget {
+  const ButtonTest({super.key, required this.label, required this.onTap});
   final String label;
-  final TestsEntity test;
+  final VoidCallback onTap;
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => Modular.to.pushNamed(AppRoutes.answerTest, arguments: test),
+      onTap: onTap,
       child: Column(
         children: [
           AppText(label),

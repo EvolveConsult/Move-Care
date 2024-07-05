@@ -23,26 +23,26 @@ class _HomePageState extends State<HomePage> {
     super.didChangeDependencies();
     final Color colorButtons = Theme.of(context).colorScheme.onSecondary.withOpacity(.75);
     homeOptions = [
-      // _HomeOption(
-      //   onTap: () => Modular.to.pushNamed(AppRoutes.wellcome),
-      //   icon: Container(
-      //       height: 20,
-      //       width: 20,
-      //       decoration: BoxDecoration(borderRadius: BorderRadius.circular(20), color: colorButtons),
-      //       alignment: Alignment.center,
-      //       child: AppText('1',
-      //           textStyle: TextStyle(color: Theme.of(context).colorScheme.background), size: AppTextSize.verySmall)),
-      //   label: 'Boas-vindas',
-      // ),
+      _HomeOption(
+        onTap: () => Modular.to.pushNamed(AppRoutes.wellcome),
+        icon: Container(
+            height: 20,
+            width: 20,
+            decoration: BoxDecoration(borderRadius: BorderRadius.circular(20), color: colorButtons),
+            alignment: Alignment.center,
+            child: AppText('1',
+                textStyle: TextStyle(color: Theme.of(context).colorScheme.background), size: AppTextSize.verySmall)),
+        label: 'Apresentação',
+      ),
       _HomeOption(
         onTap: () => Modular.to.pushNamed(AppRoutes.guidanceForUsers),
         icon: Icon(size: 20, Icons.arrow_forward_ios_rounded, color: colorButtons),
         label: 'Orientações ao usuário',
       ),
-      // _HomeOption(
-      //     onTap: () => Modular.to.pushNamed(AppRoutes.tests),
-      //     icon: AppIcon(icon: AppIcons.tests, color: colorButtons),
-      //     label: 'Testes'),
+      _HomeOption(
+          onTap: () => Modular.to.pushNamed(AppRoutes.tests),
+          icon: AppIcon(icon: AppIcons.tests, color: colorButtons),
+          label: 'Testes'),
     ];
   }
 

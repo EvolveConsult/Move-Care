@@ -86,7 +86,7 @@ class _StateGuidanceForUsersPageSuccess extends StatelessWidget {
                           imageUrl: guidanceForUser.urlImage,
                           progressIndicatorBuilder: (context, url, downloadProgress) =>
                               Center(child: CircularProgressIndicator.adaptive(value: downloadProgress.progress)),
-                          errorWidget: (context, url, error) => AppIcons.logo.icon(), //TODO mudar para logo do app
+                          errorWidget: (context, url, error) => AppIcons.logo.icon(),
                         ),
                       ),
                     ),

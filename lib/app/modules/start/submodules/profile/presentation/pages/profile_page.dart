@@ -89,10 +89,10 @@ class _ProfilePageState extends State<ProfilePage> {
     isIOS = Theme.of(context).platform == TargetPlatform.iOS;
     final Color colorButtons = Theme.of(context).colorScheme.onSecondary.withOpacity(.75);
     profileOptions = [
-      // _ProfileOption(
-      //     onTap: () => Modular.to.pushNamed(AppRoutes.contactUs),
-      //     icon: AppIcon(icon: AppIcons.mail, color: colorButtons),
-      //     label: 'Fale conosco'),
+      _ProfileOption(
+          onTap: () => Modular.to.pushNamed(AppRoutes.contactUs),
+          icon: AppIcon(icon: AppIcons.mail, color: colorButtons),
+          label: 'Fale conosco'),
       // _ProfileOption(
       //     onTap: _rateApp,
       //     icon: AppIcon(icon: AppIcons.star, color: colorButtons),

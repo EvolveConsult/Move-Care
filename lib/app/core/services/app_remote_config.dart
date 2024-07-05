@@ -6,13 +6,7 @@ import 'package:firebase_remote_config/firebase_remote_config.dart';
 import 'package:flutter/foundation.dart' show kDebugMode;
 import 'package:flutter_modular/flutter_modular.dart';
 
-enum RemoteConfigEnum {
-  linkTerms,
-  subjectEmail,
-  supportEmail,
-  androidAppBundleId,
-  appStoreId,
-}
+enum RemoteConfigEnum { linkTerms, subjectEmail, supportEmail, androidAppBundleId, appStoreId, wellcomeText }
 
 mixin RemoteConfig implements RemoteConfigAbstract {
   final RemoteConfigAbstract appRemoteConfig = Modular.get<RemoteConfigAbstract>();
@@ -92,6 +86,7 @@ class AppRemoteConfig implements RemoteConfigAbstract {
       RemoteConfigEnum.supportEmail => getString(key),
       RemoteConfigEnum.androidAppBundleId => getString(key),
       RemoteConfigEnum.appStoreId => getString(key),
+      RemoteConfigEnum.wellcomeText => getString(key),
     };
   }
 }

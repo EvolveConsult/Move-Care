@@ -1,9 +1,15 @@
+import '../presentation/pages/tests_page.dart';
+
 class TestsEntity {
   final String title;
-  // final String pathImage;
-  final List<QuestionEntity> questions;
+  final String pathImage;
+  final List<ButtonTest> tests;
 
-  TestsEntity({required this.title, required this.questions});
+  TestsEntity({
+    required this.title,
+    required this.tests,
+    required this.pathImage,
+  });
 }
 
 class QuestionEntity {
@@ -15,8 +21,9 @@ class QuestionEntity {
 
 class QuestionOptionsEntity {
   final String label;
+  final int point;
 
-  QuestionOptionsEntity({required this.label});
+  QuestionOptionsEntity({required this.label, required this.point});
 
   @override
   String toString() => label;

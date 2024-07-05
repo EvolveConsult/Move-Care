@@ -25,6 +25,9 @@ class AppRoutes {
   //TESTS
   static const tests = '/tests';
   static const answerTest = '$tests/answer';
+  static const testChildTdah = '$tests/testChildTdah';
+  static const testChildTea = '$tests/testChildTea';
+  static const testChildTdc = '$tests/testChildTdc';
   static const resultTest = '$answerTest/resultTest';
 
   //GUIDANCE_FOR_USERS

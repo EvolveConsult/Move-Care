@@ -32,7 +32,7 @@ if (flutterVersionName == null) {
 
 android {
     namespace "br.com.moveecare.moveecare"
-    compileSdkVersion flutter.compileSdkVersion
+    compileSdkVersion 34
     ndkVersion flutter.ndkVersion
 
     compileOptions {

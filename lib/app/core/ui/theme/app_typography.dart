@@ -10,7 +10,7 @@ double getScaler(AppTextSize size) {
     AppTextSize.verySmall => isIOS ? 1 : 0.9,
     AppTextSize.small => isIOS ? 1.2 : 1.05,
     AppTextSize.normal => isIOS ? 1.4 : 1.2,
-    AppTextSize.great => isIOS ? 1.7 : 1.5,
+    AppTextSize.great => isIOS ? 1.5 : 1.5,
     AppTextSize.big => isIOS ? 1.9 : 1.6,
     AppTextSize.ultra => isIOS ? 2.2 : 1.8,
   };
@@ -66,6 +66,7 @@ class AppRichText extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return RichText(
+      textAlign: textAlign ?? TextAlign.start,
       textScaler: TextScaler.linear(getScaler(size)),
       text: TextSpan(
         style: const TextStyle(color: Colors.black),
