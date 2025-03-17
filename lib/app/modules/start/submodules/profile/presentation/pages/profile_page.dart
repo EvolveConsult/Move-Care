@@ -173,7 +173,7 @@ class _ProfilePageState extends State<ProfilePage> {
                   Container(
                       padding: const EdgeInsets.only(top: 32),
                       alignment: Alignment.center,
-                      child: const AppText('Versão: 1.1.0', size: AppTextSize.verySmall))
+                      child: const AppText('Versão: 1.2.4', size: AppTextSize.verySmall))
                 ],
               ),
             )

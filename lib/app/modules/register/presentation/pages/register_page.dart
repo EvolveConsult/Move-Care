@@ -88,7 +88,7 @@ class _RegisterPageState extends State<RegisterPage> {
                     ]),
                     const SizedBox(height: 8),
                     AppText(
-                      'Digite uma senha de no mínimo 8 caracteres',
+                      'Digite uma senha de no mínimo 6 caracteres',
                       size: AppTextSize.verySmall,
                       textStyle: TextStyle(color: Theme.of(context).colorScheme.error),
                     ),

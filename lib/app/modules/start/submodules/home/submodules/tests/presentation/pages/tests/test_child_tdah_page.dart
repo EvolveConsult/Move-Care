@@ -109,7 +109,7 @@ class _TestChildTeahPageState extends State<TestChildTeahPage> {
         ],
       ),
       QuestionEntity(
-        title: '9. É esquecido em atividades do dia a dia',
+        title: '9. É esquecido(a) em atividades do dia a dia',
         options: [
           QuestionOptionsEntity(label: 'Nem um pouco', point: 0),
           QuestionOptionsEntity(label: 'Só um pouco', point: 0),
@@ -136,7 +136,7 @@ class _TestChildTeahPageState extends State<TestChildTeahPage> {
         ],
       ),
       QuestionEntity(
-        title: '12. Corre de um lado para o outro ou sobe demais nas coisas em situações em que isto é inapropriad1',
+        title: '12. Corre de um lado para o outro ou sobe demais nas coisas em situações em que isto é inapropriado',
         options: [
           QuestionOptionsEntity(label: 'Nem um pouco', point: 0),
           QuestionOptionsEntity(label: 'Só um pouco', point: 0),
@@ -251,12 +251,12 @@ class _TestChildTeahPageState extends State<TestChildTeahPage> {
       if (answersQuestions[i] == 1) totalGroup2++;
     }
 
-    if (totalGroup1 >= 6) {
+    if (totalGroup1 >= 6 && totalGroup2 >= 6) {
+      return 'A criança/adolescente possui mais sintomas de desatenção e hiperatividade/impulsividade do que o esperado.';
+    } else if (totalGroup1 >= 6) {
       return 'A criança/adolescente possui mais sintomas de desatenção do que o esperado.';
     } else if (totalGroup2 >= 6) {
       return 'A criança/adolescente possui mais sintomas de hiperatividade/impulsividade do que o esperado.';
-    } else if (totalPoints >= 6) {
-      return 'A criança/adolescente possui mais sintomas de desatenção e hiperatividade/impulsividade do que o esperado.';
     } else {
       return 'Não foram identificados sinais de desatenção ou hiperatividade/impulsividade.';
     }

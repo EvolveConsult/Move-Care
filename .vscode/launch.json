@@ -1,0 +1,11 @@
+{
+  "configurations": [
+    {
+      "name": "Moveecare",
+      "type": "dart",
+      "program": "lib/main.dart",
+      "request": "launch",
+    },
+
+  ]
+}

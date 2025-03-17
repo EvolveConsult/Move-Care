@@ -22,6 +22,14 @@
           }
         },
         {
+          "client_id": "174751530690-9ek8qb1hemr41pbciifjmjj3cq5ussap.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "br.com.moveecare.moveecare",
+            "certificate_hash": "297de618180fe9893c0ccb83545c53d0d71c6b87"
+          }
+        },
+        {
           "client_id": "174751530690-92mcutih49bi6j3qakcmvf4ndgtdia28.apps.googleusercontent.com",
           "client_type": 3
         }

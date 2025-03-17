@@ -1,15 +1,20 @@
-import '../presentation/pages/tests_page.dart';
-
-class TestsEntity {
+class TypeTestEntity {
   final String title;
   final String pathImage;
-  final List<ButtonTest> tests;
+  final List<Test> tests;
 
-  TestsEntity({
+  TypeTestEntity({
     required this.title,
     required this.tests,
     required this.pathImage,
   });
+}
+
+class Test {
+  final String label;
+  final String route;
+
+  Test({required this.label, required this.route});
 }
 
 class QuestionEntity {

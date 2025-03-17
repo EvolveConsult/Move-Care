@@ -34,9 +34,10 @@ class _ResultTestPageState extends State<ResultTestPage> {
   @override
   Widget build(BuildContext context) {
     return AppScaffoldWidget(
-      // hasAppBar: false,
+      hasAppBar: false,
       page: SingleChildScrollView(
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
           children: [
             SizedBox(height: MediaQuery.of(context).padding.top + 24),
             const AppText('Sua pontuação', size: AppTextSize.great, textStyle: TextStyle(fontWeight: FontWeight.w500)),

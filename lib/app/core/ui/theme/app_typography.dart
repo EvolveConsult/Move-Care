@@ -7,7 +7,7 @@ enum AppTextSize { verySmall, small, normal, great, big, ultra }
 double getScaler(AppTextSize size) {
   final isIOS = Platform.isIOS;
   return switch (size) {
-    AppTextSize.verySmall => isIOS ? 1 : 0.9,
+    AppTextSize.verySmall => isIOS ? .8 : .8,
     AppTextSize.small => isIOS ? 1.2 : 1.05,
     AppTextSize.normal => isIOS ? 1.4 : 1.2,
     AppTextSize.great => isIOS ? 1.5 : 1.5,

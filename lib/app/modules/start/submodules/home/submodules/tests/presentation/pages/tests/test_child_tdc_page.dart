@@ -38,9 +38,9 @@ class _TestChildTdcPageState extends State<TestChildTdcPage> {
       QuestionEntity(
         title: '1. Qual a idade da criança?',
         options: [
-          QuestionOptionsEntity(label: 'De 5 anos 0 mês a 7 anos 11 meses', point: 1),
-          QuestionOptionsEntity(label: 'De 8 anos 0 meses a 9 anos 11 meses', point: 2),
-          QuestionOptionsEntity(label: 'De 10 anos 0 meses a 15 anos', point: 3),
+          QuestionOptionsEntity(label: 'De 5 anos a 7 anos 11 meses', point: 1),
+          QuestionOptionsEntity(label: 'De 8 anos a 9 anos 11 meses', point: 2),
+          QuestionOptionsEntity(label: 'De 10 anos a 15 anos', point: 3),
         ],
       ),
       QuestionEntity(
@@ -240,7 +240,9 @@ class _TestChildTdcPageState extends State<TestChildTdcPage> {
 
   int _calcTotalPoints() {
     int total = 0;
-    answersQuestions.forEach((key, value) => total += value);
+    for (var i = 1; i < answersQuestions.values.length; i++) {
+      total += answersQuestions[i]?.toInt() ?? 0;
+    }
     return total;
   }
 
@@ -279,7 +281,7 @@ class _TestChildTdcPageState extends State<TestChildTdcPage> {
           child: Column(
             children: [
               const AppText(
-                'A maioria dos itens deste questionário se refere a atividades motoras que a criança faz com as mãos ou quando se movimenta. A coordenação motora tende a melhorar a cada ano, à medida que a criança cresce e se desenvolve. Por esse motivo, será mais fácil responder às perguntas se você pensar em outras crianças que você conhece e que têm a mesma idade da criança avaliada. Marque a opção que mais parece com a criança.',
+                'A maioria dos itens deste questionário tem como referência as atividades motoras que a criança faz com as mãos ou quando se movimenta. A coordenação motora tende a melhorar a cada ano, à medida que a criança cresce e se desenvolve. Por esse motivo, será mais fácil responder às perguntas se você pensar em outras crianças que você conhece e que têm a mesma idade da criança avaliada. Marque a opção que mais parece com a criança.',
               ),
               ListView.separated(
                   shrinkWrap: true,

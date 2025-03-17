@@ -8,8 +8,6 @@ class AppRoutes {
   //RECOVERY
   static const _recoveryPassword = '/recoveryPassword';
   static const recoveryPasswordEmail = '$_recoveryPassword/recoveryPassword';
-  // static const recoveryPasswordToken = '$recoveryPassword/token';
-  // static const recoveryPasswordPassword = '$recoveryPassword/password';
   static const recoveryPasswordSuccess = '$_recoveryPassword/success';
 
   //REGISTER
@@ -28,6 +26,9 @@ class AppRoutes {
   static const testChildTdah = '$tests/testChildTdah';
   static const testChildTea = '$tests/testChildTea';
   static const testChildTdc = '$tests/testChildTdc';
+  static const testAdultTea = '$tests/testAdultTea';
+  static const testAdultTdc = '$tests/testAdultTdc';
+  static const testAdultTdah = '$tests/testAdultTdah';
   static const resultTest = '$answerTest/resultTest';
 
   //GUIDANCE_FOR_USERS

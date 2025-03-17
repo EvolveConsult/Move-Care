@@ -5,6 +5,7 @@ import 'package:moveecare/main.dart';
 
 import '../../../../core/app_routes.dart';
 import '../../../../core/domain/erros/errors_comons.dart';
+import '../../../../core/services/app_remote_config.dart';
 import '../../../../core/ui/theme/app_typography.dart';
 import '../../../../core/ui/widgets/app_loading.dart';
 import '../../../../core/ui/widgets/default_bottom_sheet.dart';
@@ -46,7 +47,7 @@ class AuthController {
       } else if (l is ManyFailedLoginAttempts) {
         _errorManyFailedLoginAttempts();
       } else {
-        _errorDefault(l.errorMessage);
+        _errorDefault();
       }
     }, (r) {
       Modular.to.pushNamed(AppRoutes.start);
@@ -106,9 +107,15 @@ class AuthController {
     );
   }
 
-  void _errorDefault(String message) {
-    bottomSheetAlert.value =
-        DefaultBottomSheet(content: AppRichText(children: [TextSpan(text: message)]), confirmText: 'Entendi');
+  void _errorDefault() {
+    final supportEmail = AppRemoteConfig().getString(RemoteConfigEnum.supportEmail);
+    bottomSheetAlert.value = DefaultBottomSheet(
+        content: AppRichText(children: [
+          TextSpan(
+              text:
+                  'Ocorreu um erro inesperado. Se o problema persistir entre em contato conosco através do nosso e-mail: $supportEmail')
+        ]),
+        confirmText: 'Entendi');
   }
 
   Future<bool> get isLogged async {
@@ -125,7 +132,7 @@ class AuthController {
     hideAppLoading();
     result.fold((l) {
       if (l is LoginCanceled) return;
-      _errorDefault(l.errorMessage);
+      _errorDefault();
     }, (r) => Modular.to.pushReplacementNamed(AppRoutes.start));
   }
 }

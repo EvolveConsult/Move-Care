@@ -31,7 +31,7 @@ class RegisterController {
   final formKey = GlobalKey<FormState>();
   ValueNotifier<bool> enableButton = ValueNotifier(false);
 
-  final QuantityMinimum validatePassword = QuantityMinimum(minimum: 8, field: 'senha');
+  final QuantityMinimum validatePassword = QuantityMinimum(minimum: 6, field: 'senha');
   ValueNotifier<DefaultBottomSheet?> bottomSheetAlert = ValueNotifier(null);
   ValueNotifier<bool> acceptContract = ValueNotifier(false);
   ValueNotifier<bool> showErrorContract = ValueNotifier(false);

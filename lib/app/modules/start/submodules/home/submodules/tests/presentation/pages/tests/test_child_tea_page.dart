@@ -188,15 +188,23 @@ class _TestChildTeaPageState extends State<TestChildTeaPage> {
       if (answersQuestions[index] == 1) totalCritical++;
     }
 
-    if (totalCritical >= 2) {
-      return 'É importante coletar minuciosamente o histórico da criança para entender o quadro.';
-    } else if (totalPoints >= 0 && totalPoints <= 2) {
+    if (totalPoints <= 2 && totalCritical < 2) {
       return 'Não foram identificados sinais de que a criança possa desenvolver o Transtorno do Espectro Autista. Se a criança tiver menos de 2 anos (24 meses), é preciso repetir o teste.';
-    } else if (totalPoints >= 3 && totalPoints <= 7) {
+    }
+
+    if (totalPoints >= 3 && totalPoints <= 7) {
       return 'É importante coletar minuciosamente o histórico da criança para entender o quadro.';
-    } else {
+    }
+
+    if (totalPoints >= 8) {
       return 'O resultado do seu teste merece atenção, pois foram identificados sinais que podem indicar autismo.';
     }
+
+    if (totalCritical >= 2) {
+      return 'É importante coletar minuciosamente o histórico da criança para entender o quadro.';
+    }
+
+    return '';
   }
 
   @override

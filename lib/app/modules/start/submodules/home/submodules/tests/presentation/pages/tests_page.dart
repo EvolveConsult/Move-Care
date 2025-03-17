@@ -14,22 +14,22 @@ class TestsPage extends StatefulWidget {
 }
 
 class _TestsPageState extends State<TestsPage> {
-  List<TestsEntity> tests = [];
+  List<TypeTestEntity> tests = [];
 
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
     tests = [
-      TestsEntity(pathImage: 'assets/images/testChild.jpeg', title: 'Rastreamento em crianças', tests: [
-        ButtonTest(label: 'TDAH', onTap: () => Modular.to.pushNamed(AppRoutes.testChildTdah)),
-        ButtonTest(label: 'TEA', onTap: () => Modular.to.pushNamed(AppRoutes.testChildTea)),
-        ButtonTest(label: 'TDC', onTap: () => Modular.to.pushNamed(AppRoutes.testChildTdc)),
+      TypeTestEntity(pathImage: 'assets/images/imageTest.png', title: 'Rastreamento em crianças', tests: [
+        Test(label: 'TDAH', route: AppRoutes.testChildTdah),
+        Test(label: 'TEA', route: AppRoutes.testChildTea),
+        Test(label: 'TDC', route: AppRoutes.testChildTdc),
       ]),
-      // TestsEntity(pathImage: 'assets/images/testAdult.jpg', title: 'Rastreamento em adultos', tests: [
-      //   ButtonTest(label: 'TDAH', onTap: () => Modular.to.pushNamed(AppRoutes.testChildTdc)),
-      //   ButtonTest(label: 'TEA', onTap: () => Modular.to.pushNamed(AppRoutes.testChildTdc)),
-      //   ButtonTest(label: 'TDC', onTap: () => Modular.to.pushNamed(AppRoutes.testChildTdc)),
-      // ]),
+      TypeTestEntity(pathImage: 'assets/images/imageTest.png', title: 'Rastreamento em adultos', tests: [
+        Test(label: 'TDAH', route: AppRoutes.testAdultTdah),
+        Test(label: 'TEA', route: AppRoutes.testAdultTea),
+        Test(label: 'TDC', route: AppRoutes.testAdultTdc),
+      ]),
     ];
   }
 
@@ -47,7 +47,7 @@ class _TestsPageState extends State<TestsPage> {
 }
 
 class _ItemsTests extends StatelessWidget {
-  final TestsEntity test;
+  final TypeTestEntity test;
 
   const _ItemsTests({required this.test});
   @override
@@ -105,7 +105,7 @@ class _ItemsTests extends StatelessWidget {
             padding: const EdgeInsets.only(left: 12),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: test.tests,
+              children: test.tests.map((test) => _ButtonTestWidget(label: test.label, route: test.route)).toList(),
             ),
           )
         ],
@@ -114,15 +114,15 @@ class _ItemsTests extends StatelessWidget {
   }
 }
 
-class ButtonTest extends StatelessWidget {
-  const ButtonTest({super.key, required this.label, required this.onTap});
+class _ButtonTestWidget extends StatelessWidget {
+  const _ButtonTestWidget({required this.label, required this.route});
   final String label;
-  final VoidCallback onTap;
+  final String route;
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: onTap,
+      onTap: () => Modular.to.pushNamed(route),
       child: Column(
         children: [
           AppText(label),
